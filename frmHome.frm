@@ -83,9 +83,9 @@ Begin VB.Form frmHome
       BackColor       =   &H80000014&
       BorderStyle     =   0  'None
       Height          =   6045
-      Left            =   0
+      Left            =   15
       TabIndex        =   1
-      Top             =   0
+      Top             =   -30
       Width           =   14000
       Begin VB.Label lblAppName 
          Alignment       =   2  'Center
@@ -123,6 +123,14 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Private Sub btnEntrarCalculadora_Click()
+frmCalculator.Show
+End Sub
+
+Private Sub btnEntrarTodolist_Click()
+ConsultableToDoList.Show
+End Sub
+
 Private Sub Form_Load()
     Me.BackColor = RGB(25, 130, 20)
 End Sub

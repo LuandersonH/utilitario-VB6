@@ -1,7 +1,15 @@
 Type=Exe
-Form=frmHome.frm
-Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\Windows\SysWOW64\stdole2.tlb#OLE Automation
+Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\Windows\SysWOW64\stdole2.tlb#OLE Automation
 Object={EAB22AC0-30C1-11CF-A7EB-0000C05BAE0B}#1.1#0; ieframe.dll
+Reference=*\G{B691E011-1797-432E-907A-4D8C69339129}#6.1#0#..\..\Program Files (x86)\Common Files\System\ado\msado15.dll#Microsoft ActiveX Data Objects 6.1 Library
+Reference=*\G{00000300-0000-0010-8000-00AA006D2EA4}#6.0#0#..\..\Program Files (x86)\Common Files\System\ado\msador15.dll#Microsoft ActiveX Data Objects Recordset 6.0 Library
+Object={BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0; TabCtl32.Ocx
+Object={5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0; MSFlxGrd.ocx
+Form=frmHome.frm
+Form=forms\consultableToDoList.frm
+Form=forms\frmCalculator.frm
+Module=modFuncoes; mods\modFuncoes.bas
+Module=modConectarBD; mods\modConectarBD.bas
 IconForm="frmHome"
 Startup="frmHome"
 Command32=""

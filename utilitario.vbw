@@ -1,1 +1,5 @@
 frmHome = 26, 26, 1242, 482, Z, 26, 26, 1246, 508, C
+ConsultableToDoList = 182, 182, 1166, 598, C, 130, 130, 1126, 593, C
+frmCalculator = 130, 130, 1114, 546, C, 52, 52, 1048, 515, C
+modFuncoes = 182, 182, 1178, 645, C
+modConectarBD = 156, 156, 1152, 619, C
