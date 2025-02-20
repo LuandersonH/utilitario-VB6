@@ -1,7 +1,11 @@
 [History]
-1=#P0#=mb	#P1#=btnEntrarTodolist_Click	#P2#=Project1/frmHome/btnEntrarTodolist_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20250219163729	#P7#=0	#P8#=1	.
-2=#P0#=mb	#P1#=btnEntrarCalculadora_Click	#P2#=Project1/frmHome/btnEntrarCalculadora_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20250219163638	#P7#=0	#P8#=1	.
-3=#P0#=mb	#P1#=reloadListTasks	#P2#=Project1/modFuncoes/reloadListTasks	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20250219085440	#P7#=0	#P8#=0	.
-4=#P0#=mb	#P1#=InitConexao	#P2#=Project1/modConectarBD/InitConexao	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20250219085356	#P7#=0	#P8#=7	.
-5=#P0#=mb	#P1#=Form_Load	#P2#=Project1/frmHome/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20250219004310	#P7#=0	#P8#=1	.
-6=#P0#=mb	#P1#=lblHomeIntro_Click	#P2#=Project1/frmHome/lblHomeIntro_Click	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20250218231708	#P7#=0	#P8#=3	.
+1=#P0#=mb	#P1#=btnAddMedia_Click	#P2#=Project1/frmMedia/btnAddMedia_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20250220011505	#P7#=0	#P8#=1	.
+2=#P0#=mb	#P1#=btnMedia_Click	#P2#=Project1/frmFavorites/btnMedia_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20250220003349	#P7#=0	#P8#=1	.
+3=#P0#=mb	#P1#=btnVehicles_Click	#P2#=Project1/frmFavorites/btnVehicles_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20250220003413	#P7#=0	#P8#=1	.
+4=#P0#=mb	#P1#=Form_Load	#P2#=Project1/frmHome/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20250220002041	#P7#=0	#P8#=0	.
+5=#P0#=mb	#P1#=lblHomeIntro_Click	#P2#=Project1/frmHome/lblHomeIntro_Click	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20250220002034	#P7#=0	#P8#=-1	.
+6=#P0#=mb	#P1#=btnEntrarFavoritos_Click	#P2#=Project1/frmHome/btnEntrarFavoritos_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20250220001100	#P7#=0	#P8#=2	.
+7=#P0#=mb	#P1#=btnEntrarTodolist_Click	#P2#=Project1/frmHome/btnEntrarTodolist_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20250219163729	#P7#=0	#P8#=2	.
+8=#P0#=mb	#P1#=btnEntrarCalculadora_Click	#P2#=Project1/frmHome/btnEntrarCalculadora_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20250219163638	#P7#=0	#P8#=0	.
+9=#P0#=mb	#P1#=reloadListTasks	#P2#=Project1/modFuncoes/reloadListTasks	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20250219085440	#P7#=0	#P8#=0	.
+10=#P0#=mb	#P1#=InitConexao	#P2#=Project1/modConectarBD/InitConexao	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20250219085356	#P7#=0	#P8#=7	.

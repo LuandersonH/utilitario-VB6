@@ -1,4 +1,4 @@
-Line 41: Property TabPicture(0) in sstabToDoList had an invalid file reference.
-Line 52: Property TabPicture(1) in sstabToDoList had an invalid file reference.
-Line 203: Property ItemData in listTasks had an invalid file reference.
-Line 205: Property List in listTasks had an invalid file reference.
+Line 40: Property TabPicture(0) in sstabToDoList had an invalid file reference.
+Line 58: Property TabPicture(1) in sstabToDoList had an invalid file reference.
+Line 206: Property ItemData in listTasks had an invalid file reference.
+Line 208: Property List in listTasks had an invalid file reference.

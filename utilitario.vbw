@@ -1,5 +1,8 @@
-frmHome = 26, 26, 1242, 482, Z, 26, 26, 1246, 508, C
-ConsultableToDoList = 182, 182, 1166, 598, C, 130, 130, 1126, 593, C
-frmCalculator = 130, 130, 1114, 546, C, 52, 52, 1048, 515, C
+frmHome = 26, 26, 1242, 482, C, 26, 26, 1246, 508, C
+ConsultableToDoList = 0, 0, 0, 0, C, 104, 104, 1346, 544, C
+frmCalculator = 0, 0, 0, 0, C, 78, 78, 1320, 518, C
 modFuncoes = 182, 182, 1178, 645, C
 modConectarBD = 156, 156, 1152, 619, C
+frmFavorites = 130, 130, 1372, 570, C, 104, 104, 1346, 544, C
+frmMedia = 26, 26, 1268, 466, Z, 130, 130, 1372, 570, C
+frmVehicles = 0, 0, 0, 0, C, 156, 156, 1398, 596, C

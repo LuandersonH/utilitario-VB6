@@ -1,5 +1,6 @@
 VERSION 5.00
 Begin VB.Form frmHome 
+   BackColor       =   &H0000C000&
    BorderStyle     =   0  'None
    Caption         =   "UTILITÁRIO"
    ClientHeight    =   7980
@@ -79,7 +80,7 @@ Begin VB.Form frmHome
          Width           =   2595
       End
    End
-   Begin VB.Frame Frame1 
+   Begin VB.Frame frameHome 
       BackColor       =   &H80000014&
       BorderStyle     =   0  'None
       Height          =   6045
@@ -127,15 +128,17 @@ Private Sub btnEntrarCalculadora_Click()
 frmCalculator.Show
 End Sub
 
+Private Sub btnEntrarFavoritos_Click()
+frmFavorites.Show
+End Sub
+
 Private Sub btnEntrarTodolist_Click()
 ConsultableToDoList.Show
 End Sub
 
 Private Sub Form_Load()
-    Me.BackColor = RGB(25, 130, 20)
 End Sub
 
 Private Sub lblHomeIntro_Click()
 
 End Sub
-
