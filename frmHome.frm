@@ -51,6 +51,14 @@ Begin VB.Form frmHome
       TabIndex        =   5
       Top             =   3000
       Width           =   2800
+      Begin VB.Image imgFavs 
+         Height          =   1995
+         Left            =   555
+         Picture         =   "frmHome.frx":0000
+         Stretch         =   -1  'True
+         Top             =   465
+         Width           =   1800
+      End
    End
    Begin VB.Frame frameToDoList 
       BackColor       =   &H8000000E&
@@ -60,6 +68,14 @@ Begin VB.Form frmHome
       TabIndex        =   4
       Top             =   3000
       Width           =   2800
+      Begin VB.Image imgToDoList 
+         Height          =   1995
+         Left            =   510
+         Picture         =   "frmHome.frx":F216
+         Stretch         =   -1  'True
+         Top             =   480
+         Width           =   1800
+      End
    End
    Begin VB.Frame frameCalculadora 
       BackColor       =   &H8000000E&
@@ -78,6 +94,14 @@ Begin VB.Form frmHome
          TabIndex        =   6
          Top             =   2650
          Width           =   2595
+      End
+      Begin VB.Image imgCalculator 
+         Height          =   1995
+         Left            =   510
+         Picture         =   "frmHome.frx":108C3
+         Stretch         =   -1  'True
+         Top             =   420
+         Width           =   1800
       End
    End
    Begin VB.Frame frameHome 
@@ -136,9 +160,7 @@ Private Sub btnEntrarTodolist_Click()
 ConsultableToDoList.Show
 End Sub
 
-Private Sub Form_Load()
-End Sub
-
 Private Sub lblHomeIntro_Click()
 
 End Sub
+

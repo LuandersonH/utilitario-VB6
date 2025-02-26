@@ -118,18 +118,10 @@ Private Sub lblVehicles_Click()
 
 End Sub
 
+Private Sub comboTipo_Change()
+
+End Sub
+
 Private Sub btnAddMedia_Click()
-
-End Sub
-
-Private Sub btnReloadList_Click()
-
-End Sub
-
-Private Sub comboTIPO_Change()
-
-End Sub
-
-Private Sub lblMediaInput_Click()
-
+frmMediaAdicionar.Show
 End Sub

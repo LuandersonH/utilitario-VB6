@@ -32,31 +32,34 @@ Begin VB.Form ConsultableToDoList
       _ExtentY        =   15954
       _Version        =   393216
       Tabs            =   2
-      Tab             =   1
       TabsPerRow      =   2
       TabHeight       =   520
       TabMaxWidth     =   5292
       BackColor       =   8388608
       TabCaption(0)   =   "Lista de tarefas"
       TabPicture(0)   =   "ConsultableToDoList.frx":0000
-      Tab(0).ControlEnabled=   0   'False
-      Tab(0).Control(0)=   "btnClearAll"
-      Tab(0).Control(1)=   "btnFinishedTask"
-      Tab(0).Control(2)=   "btnDeleteTask"
+      Tab(0).ControlEnabled=   -1  'True
+      Tab(0).Control(0)=   "lblTodolist"
+      Tab(0).Control(0).Enabled=   0   'False
+      Tab(0).Control(1)=   "listTasks"
+      Tab(0).Control(1).Enabled=   0   'False
+      Tab(0).Control(2)=   "tboxInsertTask"
+      Tab(0).Control(2).Enabled=   0   'False
       Tab(0).Control(3)=   "btnInsertTask"
-      Tab(0).Control(4)=   "tboxInsertTask"
-      Tab(0).Control(5)=   "listTasks"
-      Tab(0).Control(6)=   "lblTodolist"
+      Tab(0).Control(3).Enabled=   0   'False
+      Tab(0).Control(4)=   "btnDeleteTask"
+      Tab(0).Control(4).Enabled=   0   'False
+      Tab(0).Control(5)=   "btnFinishedTask"
+      Tab(0).Control(5).Enabled=   0   'False
+      Tab(0).Control(6)=   "btnClearAll"
+      Tab(0).Control(6).Enabled=   0   'False
       Tab(0).ControlCount=   7
       TabCaption(1)   =   "Histórico"
       TabPicture(1)   =   "ConsultableToDoList.frx":001C
-      Tab(1).ControlEnabled=   -1  'True
+      Tab(1).ControlEnabled=   0   'False
       Tab(1).Control(0)=   "lblHistoryInput"
-      Tab(1).Control(0).Enabled=   0   'False
       Tab(1).Control(1)=   "GridHistorico"
-      Tab(1).Control(1).Enabled=   0   'False
       Tab(1).Control(2)=   "inputHistoryFilter"
-      Tab(1).Control(2).Enabled=   0   'False
       Tab(1).ControlCount=   3
       Begin VB.TextBox inputHistoryFilter 
          BackColor       =   &H00C0C0C0&
@@ -70,7 +73,7 @@ Begin VB.Form ConsultableToDoList
             Strikethrough   =   0   'False
          EndProperty
          Height          =   780
-         Left            =   135
+         Left            =   -74865
          MaxLength       =   40
          MultiLine       =   -1  'True
          TabIndex        =   9
@@ -79,7 +82,7 @@ Begin VB.Form ConsultableToDoList
       End
       Begin MSFlexGridLib.MSFlexGrid GridHistorico 
          Height          =   6930
-         Left            =   100
+         Left            =   -74900
          TabIndex        =   8
          Top             =   1770
          Width           =   14900
@@ -106,7 +109,7 @@ Begin VB.Form ConsultableToDoList
             Strikethrough   =   0   'False
          EndProperty
          Height          =   825
-         Left            =   -63945
+         Left            =   11055
          Style           =   1  'Graphical
          TabIndex        =   6
          Top             =   6705
@@ -125,7 +128,7 @@ Begin VB.Form ConsultableToDoList
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1245
-         Left            =   -63900
+         Left            =   11100
          Style           =   1  'Graphical
          TabIndex        =   5
          Top             =   4185
@@ -144,7 +147,7 @@ Begin VB.Form ConsultableToDoList
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1095
-         Left            =   -63930
+         Left            =   11070
          Style           =   1  'Graphical
          TabIndex        =   4
          Top             =   5520
@@ -163,7 +166,7 @@ Begin VB.Form ConsultableToDoList
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1110
-         Left            =   -63945
+         Left            =   11055
          Style           =   1  'Graphical
          TabIndex        =   3
          Top             =   1875
@@ -181,7 +184,7 @@ Begin VB.Form ConsultableToDoList
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1065
-         Left            =   -72075
+         Left            =   2925
          MaxLength       =   40
          MultiLine       =   -1  'True
          TabIndex        =   2
@@ -200,7 +203,7 @@ Begin VB.Form ConsultableToDoList
             Strikethrough   =   0   'False
          EndProperty
          Height          =   3300
-         Left            =   -72075
+         Left            =   2925
          TabIndex        =   1
          Top             =   4245
          Width           =   8080
@@ -219,7 +222,7 @@ Begin VB.Form ConsultableToDoList
             Strikethrough   =   0   'False
          EndProperty
          Height          =   345
-         Left            =   5580
+         Left            =   -69420
          TabIndex        =   10
          Top             =   480
          Width           =   3570
@@ -239,7 +242,7 @@ Begin VB.Form ConsultableToDoList
          EndProperty
          ForeColor       =   &H00404040&
          Height          =   630
-         Left            =   -70455
+         Left            =   4545
          TabIndex        =   7
          Top             =   840
          Width           =   5565

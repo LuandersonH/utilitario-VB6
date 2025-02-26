@@ -1,0 +1,26 @@
+--------------- MÚSICA ---------------
+
+NOME:
+ARTISTA:
+PARTICIPANTES:
+ALBUM:
+GÊNERO:
+NOTA: 1 À 5
+
+--------------- FILME ---------------
+
+NOME:
+DIRETOR:
+ATORES:
+DURAÇÃO:
+GÊNERO:
+NOTA: 1 À 5
+
+--------------- SÉRIE ---------------
+
+NOME:
+DIRETOR:
+ATORES:
+TEMPORADAS:
+GÊNERO:
+NOTA: 1 À 5

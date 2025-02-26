@@ -1,4 +1,4 @@
-Attribute VB_Name = "modFuncoes"
+Attribute VB_Name = "mod_Funcoes_ToDoList"
 Public Function reloadListTasks(frm As Object)
     Dim querySelectTasksPendentes As String
    querySelectTasksPendentes = "SELECT Codigo, Descricao FROM Tasks WHERE Status = 'PENDENTE' ORDER BY Codigo ASC"
