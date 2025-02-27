@@ -11,7 +11,6 @@ Public Function reloadListTasks(frm As Object)
     frm.listTasks.Clear
 
     If Not recordBD.EOF Then
-        'While EOF <> True (errei)
         While Not recordBD.EOF
             'add a descricao na listTasks para ser exibida
             frm.listTasks.AddItem recordBD.Fields("Descricao").Value
@@ -39,7 +38,7 @@ Public Function addTasks(frm As Object)
     On Error GoTo addTasksErro
     ' Verifica se uma tarefa foi selecionada
     If Trim(frm.tboxInsertTask.Text) <> "" Then
-        'corta os espaÃ§os
+        'corta os espaços
         newTask = Trim(frm.tboxInsertTask.Text)
         'troca uma aspa simples por 2 aspas simples para ser interpretado certo no banco, caso o usuario digite uma aspa simples na descricao da tarefa
         newTask = Replace(newTask, "'", "''")

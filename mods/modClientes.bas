@@ -8,45 +8,45 @@ Public Function AtualizarCamposPorTipo(frm)
 
                ' Artista para Diretor
                frm.lblDiretor.Caption = "Diretor"
-               frm.txtDiretor.Tag = "tagDiretor"
+               frm.txtDiretorArtista.Tag = "tagDiretor"
 
                ' Participantes para Atores
                frm.lblAtores.Caption = "Atores"
-               frm.txtAtores.Tag = "tagAtores"
+               frm.txtAtoresParticipantes.Tag = "tagAtores"
 
                ' Álbum para Duração
                frm.lblDuracao.Caption = "Duração"
-               frm.txtDuracao.Tag = "tagDuracao"
+               frm.txtDuracaoTemporadasAlbum.Tag = "tagDuracao"
                
           Case "SERIE"
                frm.lblNome.Caption = "Nome da série"
 
                ' Artista para Diretor
                frm.lblDiretor.Caption = "Diretor"
-               frm.txtDiretor.Tag = "tagDiretor"
+               frm.txtDiretorArtista.Tag = "tagDiretor"
 
                ' Participantes para Atores
                frm.lblAtores.Caption = "Atores"
-               frm.txtAtores.Tag = "tagAtores"
+               frm.txtAtoresParticipantes.Tag = "tagAtores"
 
                ' Duração para Temporadas
                frm.lblDuracao.Caption = "Temporadas"
-               frm.txtDuracao.Tag = "tagTemporadas"
+               frm.txtDuracaoTemporadasAlbum.Tag = "tagTemporadas"
 
           Case "MUSICA"
                frm.lblNome.Caption = "Nome da música"
 
                ' Diretor para Artista
                frm.lblDiretor.Caption = "Artista"
-               frm.txtDiretor.Tag = "tagArtista"
+               frm.txtDiretorArtista.Tag = "tagArtista"
 
                ' Atores para Participantes
                frm.lblAtores.Caption = "Participantes"
-               frm.txtAtores.Tag = "tagParticipantes"
+               frm.txtAtoresParticipantes.Tag = "tagParticipantes"
 
                ' Duração para Álbum
                frm.lblDuracao.Caption = "Álbum"
-               frm.txtDuracao.Tag = "tagAlbum"
+               frm.txtDuracaoTemporadasAlbum.Tag = "tagAlbum"
                
      End Select
 End Function

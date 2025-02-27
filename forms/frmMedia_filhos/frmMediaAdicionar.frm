@@ -63,7 +63,7 @@ Begin VB.Form frmMediaAdicionar
       Top             =   1770
       Width           =   3255
    End
-   Begin VB.TextBox txtDuracao 
+   Begin VB.TextBox txtDuracaoTemporadasAlbum 
       Height          =   315
       Left            =   90
       TabIndex        =   9
@@ -71,7 +71,7 @@ Begin VB.Form frmMediaAdicionar
       Top             =   1770
       Width           =   3705
    End
-   Begin VB.TextBox txtAtores 
+   Begin VB.TextBox txtAtoresParticipantes 
       Height          =   315
       Left            =   4000
       TabIndex        =   7
@@ -79,7 +79,7 @@ Begin VB.Form frmMediaAdicionar
       Top             =   1095
       Width           =   5550
    End
-   Begin VB.TextBox txtDiretor 
+   Begin VB.TextBox txtDiretorArtista 
       Height          =   315
       Left            =   90
       TabIndex        =   5
@@ -265,24 +265,29 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Private Sub btnAdicionar_Click()
 
-Select Case cboTipo.List(cboTipo.ListIndex)
-Case "FILME"
-MsgBox "FILME"
+     Select Case cboTipo.List(cboTipo.ListIndex)
+     Case "FILME"
+          MsgBox "FILME"
+          ' Query correta para o INSERT
+          queryAddFilme = "INSERT INTO Filmes (Nome, Diretor, Atores, Duracao, Genero, Nota, Observacao) VALUES ('" & txtNome.Text & "',  '" & txtDiretorArtista.Text & "', '" & txtAtoresParticipantes.Text & "' , '" & txtDuracaoTemporadasAlbum.Text & "', '" & txtGenero.Text & "', '" & txtNota.Text & "', '" & txtObservacao.Text & "')"
+          
+          ' Executa a query no BD
+          If connectBD.State = adStateClosed Then connectBD.Open
+          connectBD.Execute queryAddFilme
 
-Case "SERIE"
-MsgBox "SERIE"
-
-Case "MUSICA"
-MsgBox "MUSICA"
-
-Case Else
- MsgBox "SELECIONE UM TIPO DE MÍDIA PARA SER CADASTRADA", vbExclamation, "SELECIONE UM TIPO"
-
-End Select
-
+     Case "SERIE"
+     MsgBox "SERIE"
+     
+     Case "MUSICA"
+     MsgBox "MUSICA"
+     
+     Case Else
+      MsgBox "SELECIONE UM TIPO DE MÍDIA PARA SER CADASTRADA", vbExclamation, "SELECIONE UM TIPO"
+     
+     End Select
 
 End Sub
 
 Private Sub cboTipo_Click()
-Call AtualizarCamposPorTipo(Me)
+     Call AtualizarCamposPorTipo(Me)
 End Sub

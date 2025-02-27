@@ -164,3 +164,7 @@ Private Sub lblHomeIntro_Click()
 
 End Sub
 
+Private Sub Form_Load()
+Call InitConexao(Me)
+End Sub
+
