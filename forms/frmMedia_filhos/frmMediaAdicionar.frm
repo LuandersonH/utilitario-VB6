@@ -19,13 +19,53 @@ Begin VB.Form frmMediaAdicionar
    ScaleWidth      =   9750
    ShowInTaskbar   =   0   'False
    StartUpPosition =   3  'Windows Default
+   Begin VB.TextBox txtDuracaoTemporadasAlbum 
+      Alignment       =   2  'Center
+      BeginProperty DataFormat 
+         Type            =   0
+         Format          =   "HH:mm"
+         HaveTrueFalseNull=   0
+         FirstDayOfWeek  =   0
+         FirstWeekOfYear =   0
+         LCID            =   1046
+         SubFormatType   =   0
+      EndProperty
+      Height          =   285
+      Left            =   45
+      MaxLength       =   5
+      TabIndex        =   17
+      Tag             =   "tagDuracao"
+      Top             =   1800
+      Width           =   1185
+   End
+   Begin VB.ComboBox cboNota 
+      Appearance      =   0  'Flat
+      BeginProperty DataFormat 
+         Type            =   1
+         Format          =   "0"
+         HaveTrueFalseNull=   0
+         FirstDayOfWeek  =   0
+         FirstWeekOfYear =   0
+         LCID            =   1046
+         SubFormatType   =   1
+      EndProperty
+      Height          =   315
+      ItemData        =   "frmMediaAdicionar.frx":0000
+      Left            =   7260
+      List            =   "frmMediaAdicionar.frx":0002
+      Style           =   2  'Dropdown List
+      TabIndex        =   16
+      Tag             =   "tagNota"
+      Top             =   1800
+      Width           =   1830
+   End
    Begin VB.CommandButton btnVoltar 
       BackColor       =   &H00C0FFFF&
       Caption         =   "VOLTAR"
       Height          =   675
       Left            =   4290
       Style           =   1  'Graphical
-      TabIndex        =   17
+      TabIndex        =   15
       Top             =   2955
       Width           =   2190
    End
@@ -35,41 +75,25 @@ Begin VB.Form frmMediaAdicionar
       Height          =   675
       Left            =   1965
       Style           =   1  'Graphical
-      TabIndex        =   16
+      TabIndex        =   14
       Top             =   2940
       Width           =   2190
    End
    Begin VB.TextBox txtObservacao 
       Height          =   315
       Left            =   60
-      TabIndex        =   15
+      TabIndex        =   13
       Tag             =   "tagObservacao"
       Top             =   2535
       Width           =   9645
    End
-   Begin VB.TextBox txtNota 
-      Height          =   315
-      Left            =   7335
-      TabIndex        =   13
-      Tag             =   "tagNota"
-      Top             =   1785
-      Width           =   2160
-   End
    Begin VB.TextBox txtGenero 
       Height          =   315
-      Left            =   4005
-      TabIndex        =   11
+      Left            =   1500
+      TabIndex        =   10
       Tag             =   "tagGenero"
-      Top             =   1770
-      Width           =   3255
-   End
-   Begin VB.TextBox txtDuracaoTemporadasAlbum 
-      Height          =   315
-      Left            =   90
-      TabIndex        =   9
-      Tag             =   "tagDuracao"
-      Top             =   1770
-      Width           =   3705
+      Top             =   1800
+      Width           =   5565
    End
    Begin VB.TextBox txtAtoresParticipantes 
       Height          =   315
@@ -97,11 +121,12 @@ Begin VB.Form frmMediaAdicionar
    End
    Begin VB.ComboBox cboTipo 
       Height          =   315
-      ItemData        =   "frmMediaAdicionar.frx":0000
+      ItemData        =   "frmMediaAdicionar.frx":0004
       Left            =   105
-      List            =   "frmMediaAdicionar.frx":000D
+      List            =   "frmMediaAdicionar.frx":0011
       Style           =   2  'Dropdown List
       TabIndex        =   1
+      Tag             =   "tagTipo"
       Top             =   400
       Width           =   1830
    End
@@ -120,7 +145,7 @@ Begin VB.Form frmMediaAdicionar
       EndProperty
       Height          =   240
       Left            =   4110
-      TabIndex        =   14
+      TabIndex        =   12
       Top             =   2280
       Width           =   1200
    End
@@ -139,8 +164,8 @@ Begin VB.Form frmMediaAdicionar
       EndProperty
       Height          =   240
       Left            =   7335
-      TabIndex        =   12
-      Top             =   1560
+      TabIndex        =   11
+      Top             =   1600
       Width           =   810
    End
    Begin VB.Label lblGenero 
@@ -157,9 +182,9 @@ Begin VB.Form frmMediaAdicionar
          Strikethrough   =   0   'False
       EndProperty
       Height          =   240
-      Left            =   4050
-      TabIndex        =   10
-      Top             =   1545
+      Left            =   1545
+      TabIndex        =   9
+      Top             =   1605
       Width           =   810
    End
    Begin VB.Label lblDuracao 
@@ -178,7 +203,7 @@ Begin VB.Form frmMediaAdicionar
       Height          =   240
       Left            =   100
       TabIndex        =   8
-      Top             =   1550
+      Top             =   1600
       Width           =   810
    End
    Begin VB.Label lblAtores 
@@ -264,30 +289,163 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Private Sub btnAdicionar_Click()
-
      Select Case cboTipo.List(cboTipo.ListIndex)
-     Case "FILME"
-          MsgBox "FILME"
-          ' Query correta para o INSERT
-          queryAddFilme = "INSERT INTO Filmes (Nome, Diretor, Atores, Duracao, Genero, Nota, Observacao) VALUES ('" & txtNome.Text & "',  '" & txtDiretorArtista.Text & "', '" & txtAtoresParticipantes.Text & "' , '" & txtDuracaoTemporadasAlbum.Text & "', '" & txtGenero.Text & "', '" & txtNota.Text & "', '" & txtObservacao.Text & "')"
-          
-          ' Executa a query no BD
-          If connectBD.State = adStateClosed Then connectBD.Open
-          connectBD.Execute queryAddFilme
+          Case "FILME"
+          On Error GoTo ErroNoCadastroDeFilme
+     
+               ' Garante que a conexao esta aberta
+               If connectBD.State = adStateClosed Then connectBD.Open
+     
+               'Declaracao de uma var do tipo ADODB.Command, que fara a SQL
+               Dim cmdFilme As New ADODB.Command
+               Set cmdFilme = New ADODB.Command
+     
+               'Conectando esse comando ao banco
+               cmdFilme.ActiveConnection = connectBD
+     
+               'A query que tera os valores substituidos:
+               cmdFilme.CommandText = "INSERT INTO Filmes (Nome, Diretor, Atores, Duracao, Genero, Nota, Observacao) VALUES (?, ?, ?, ?, ?, ?, ?)"
+               
+               'Substituicao dos parametros pelos dados dos inputs:
+               cmdFilme.Parameters.Append cmdFilme.CreateParameter(, adVarChar, adParamInput, 255, txtNome.Text)
+               cmdFilme.Parameters.Append cmdFilme.CreateParameter(, adVarChar, adParamInput, 255, txtDiretorArtista.Text)
+               cmdFilme.Parameters.Append cmdFilme.CreateParameter(, adVarChar, adParamInput, 255, txtAtoresParticipantes.Text)
+               cmdFilme.Parameters.Append cmdFilme.CreateParameter(, adDate, adParamInput, 255, txtDuracaoTemporadasAlbum.Text)
+               cmdFilme.Parameters.Append cmdFilme.CreateParameter(, adVarChar, adParamInput, 255, txtGenero.Text)
+               cmdFilme.Parameters.Append cmdFilme.CreateParameter(, adInteger, adParamInput, , CInt(cboNota.Text))
+               cmdFilme.Parameters.Append cmdFilme.CreateParameter(, adVarChar, adParamInput, 255, txtObservacao.Text)
+               
+               cmdFilme.Execute
+               
+               MsgBox "Cadastro realizado com sucesso", vbExclamation, "SUCESSO"
+               Unload Me
+               Load frmMedia
+          Exit Sub
 
+ErroNoCadastroDeFilme:
+          MsgBox "Erro no cadastro: " & Err.Number & " - " & Err.Description, vbCritical, "Erro"
+     
      Case "SERIE"
-     MsgBox "SERIE"
+     On Error GoTo ErroNoCadastroDeSerie
+     
+               ' Garante que a conexao esta aberta
+               If connectBD.State = adStateClosed Then connectBD.Open
+     
+               'Declaracao de uma var do tipo ADODB.Command, que fara a SQL
+               Dim cmdSerie As New ADODB.Command
+               Set cmdSerie = New ADODB.Command
+     
+               'Conectando esse comando ao banco
+               cmdSerie.ActiveConnection = connectBD
+     
+               'A query que tera os valores substituidos:
+               cmdSerie.CommandText = "INSERT INTO Series (Nome, Diretor, Atores, Temporadas, Genero, Nota, Observacao) VALUES (?, ?, ?, ?, ?, ?, ?)"
+               
+               'Substituicao dos parametros pelos dados dos inputs:
+               cmdSerie.Parameters.Append cmdSerie.CreateParameter(, adVarChar, adParamInput, 255, txtNome.Text)
+               cmdSerie.Parameters.Append cmdSerie.CreateParameter(, adVarChar, adParamInput, 255, txtDiretorArtista.Text)
+               cmdSerie.Parameters.Append cmdSerie.CreateParameter(, adVarChar, adParamInput, 255, txtAtoresParticipantes.Text)
+               cmdSerie.Parameters.Append cmdSerie.CreateParameter(, adInteger, adParamInput, , CInt(txtDuracaoTemporadasAlbum.Text))
+               cmdSerie.Parameters.Append cmdSerie.CreateParameter(, adVarChar, adParamInput, 255, txtGenero.Text)
+               cmdSerie.Parameters.Append cmdSerie.CreateParameter(, adInteger, adParamInput, , CInt(cboNota.Text))
+               cmdSerie.Parameters.Append cmdSerie.CreateParameter(, adVarChar, adParamInput, 255, txtObservacao.Text)
+               
+               cmdSerie.Execute
+               
+               MsgBox "Cadastro realizado com sucesso", vbExclamation, "SUCESSO"
+               Unload Me
+               Load frmMedia
+          Exit Sub
+
+ErroNoCadastroDeSerie:
+          MsgBox "Erro no cadastro: " & Err.Number & " - " & Err.Description, vbCritical, "Erro"
      
      Case "MUSICA"
-     MsgBox "MUSICA"
+          
+     On Error GoTo ErroNoCadastroDeMusica
      
+               ' Garante que a conexao esta aberta
+               If connectBD.State = adStateClosed Then connectBD.Open
+     
+               'Declaracao de uma var do tipo ADODB.Command, que fara a SQL
+               Dim cmdMusica As New ADODB.Command
+               Set cmdMusica = New ADODB.Command
+     
+               'Conectando esse comando ao banco
+               cmdMusica.ActiveConnection = connectBD
+     
+               'A query que tera os valores substituidos:
+               cmdMusica.CommandText = "INSERT INTO Musicas (Nome, Artista, Participantes, Album, Genero, Nota, Observacao) VALUES (?, ?, ?, ?, ?, ?, ?)"
+               
+               'Substituicao dos parametros pelos dados dos inputs:
+               cmdMusica.Parameters.Append cmdMusica.CreateParameter(, adVarChar, adParamInput, 255, txtNome.Text)
+               cmdMusica.Parameters.Append cmdMusica.CreateParameter(, adVarChar, adParamInput, 255, txtDiretorArtista.Text)
+               cmdMusica.Parameters.Append cmdMusica.CreateParameter(, adVarChar, adParamInput, 255, txtAtoresParticipantes.Text)
+               cmdMusica.Parameters.Append cmdMusica.CreateParameter(, adVarChar, adParamInput, 255, txtDuracaoTemporadasAlbum.Text)
+               cmdMusica.Parameters.Append cmdMusica.CreateParameter(, adVarChar, adParamInput, 255, txtGenero.Text)
+               cmdMusica.Parameters.Append cmdMusica.CreateParameter(, adInteger, adParamInput, , CInt(cboNota.Text))
+               cmdMusica.Parameters.Append cmdMusica.CreateParameter(, adVarChar, adParamInput, 255, txtObservacao.Text)
+               
+               cmdMusica.Execute
+               
+               MsgBox "Cadastro realizado com sucesso", vbExclamation, "SUCESSO"
+               Unload Me
+               Load frmMedia
+          Exit Sub
+
+ErroNoCadastroDeMusica:
+          MsgBox "Erro no cadastro: " & Err.Number & " - " & Err.Description, vbCritical, "Erro"
+          
      Case Else
-      MsgBox "SELECIONE UM TIPO DE MÍDIA PARA SER CADASTRADA", vbExclamation, "SELECIONE UM TIPO"
+          MsgBox "SELECIONE UM TIPO DE MÍDIA PARA SER CADASTRADA", vbExclamation, "SELECIONE UM TIPO"
      
      End Select
 
 End Sub
 
+
+
 Private Sub cboTipo_Click()
      Call AtualizarCamposPorTipo(Me)
+End Sub
+
+Private Sub Form_Load()
+     'Adicionando as opcoes no cboNota - notas de 1 a 5
+    Dim i As Integer
+     For i = 1 To 5
+          cboNota.AddItem i
+     Next i
+
+End Sub
+
+Private Sub txtDuracaoTemporadasAlbum_KeyPress(KeyAscii As Integer)
+
+If txtDuracaoTemporadasAlbum.Tag = "tagDuracao" Or txtDuracaoTemporadasAlbum.Tag = "tagTemporadas" Then
+     ' Permitir números de 0 a 9 (ASCII 49 a 57), dois pontos ":" (ASCII 58) e Backspace (ASCII 8)
+     If (KeyAscii >= 48 And KeyAscii <= 57) Or KeyAscii = 58 Or KeyAscii = 8 Then
+          Exit Sub  ' Permite a tecla pressionada
+     End If
+
+     ' Permitir apenas números de 1 a 9 (ASCII 49 a 57)
+
+     If txtDuracaoTemporadasAlbum.Tag = "tagDuracao" Then
+    If KeyAscii = 58 Then ' Código ASCII do ":"
+     Exit Sub
+          End If
+     End If
+
+     If (KeyAscii >= 49 And KeyAscii <= 57) Then
+     ' Permitir números de 1 a 9
+          Exit Sub
+     End If
+
+     ' Permitir a tecla Backspace (Código ASCII 8)
+     If KeyAscii = 8 Then
+          Exit Sub
+     End If
+
+     KeyAscii = 0 ' Impede que a tecla seja processada
+End If
+          
+    
 End Sub

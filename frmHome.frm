@@ -1,11 +1,11 @@
 VERSION 5.00
 Begin VB.Form frmHome 
    BackColor       =   &H0000C000&
-   BorderStyle     =   0  'None
+   BorderStyle     =   1  'Fixed Single
    Caption         =   "UTILITÁRIO"
    ClientHeight    =   7980
-   ClientLeft      =   0
-   ClientTop       =   0
+   ClientLeft      =   45
+   ClientTop       =   390
    ClientWidth     =   13995
    BeginProperty Font 
       Name            =   "Tahoma"
@@ -21,7 +21,6 @@ Begin VB.Form frmHome
    MinButton       =   0   'False
    ScaleHeight     =   7980
    ScaleWidth      =   13995
-   ShowInTaskbar   =   0   'False
    StartUpPosition =   3  'Windows Default
    Begin VB.CommandButton btnEntrarFavoritos 
       BackColor       =   &H00C0FFFF&
@@ -108,9 +107,9 @@ Begin VB.Form frmHome
       BackColor       =   &H80000014&
       BorderStyle     =   0  'None
       Height          =   6045
-      Left            =   15
+      Left            =   0
       TabIndex        =   1
-      Top             =   -30
+      Top             =   -120
       Width           =   14000
       Begin VB.Label lblAppName 
          Alignment       =   2  'Center
