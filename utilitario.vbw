@@ -1,10 +1,10 @@
 frmHome = 26, 26, 1242, 482, C, 26, 26, 1246, 508, C
 ConsultableToDoList = 52, 52, 1336, 534, C, 104, 104, 1346, 544, C
 frmCalculator = 0, 0, 0, 0, C, 78, 78, 1320, 518, C
-mod_Funcoes_ToDoList = 182, 182, 1178, 645, C
+mod_Funcoes_ToDoList = 182, 182, 1178, 645, 
 modConectarBD = 156, 156, 1152, 619, C
 frmFavorites = 130, 130, 1372, 570, C, 104, 104, 1346, 544, C
-frmMedia = 26, 26, 1268, 466, C, 130, 130, 1372, 570, C
+frmMedia = 26, 26, 1268, 466, Z, 130, 130, 1372, 570, C
 frmVehicles = 0, 0, 0, 0, C, 156, 156, 1398, 596, C
-frmMediaAdicionar = 0, 0, 1242, 440, , 130, 130, 1372, 570, C
-modClientes = 52, 52, 1307, 642, Z
+frmMediaAdicionar = 0, 0, 1242, 440, C, 130, 130, 1372, 570, C
+modClientes = 52, 52, 1307, 642, C

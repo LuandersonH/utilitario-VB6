@@ -256,7 +256,7 @@ Dim handleTaskValue As String
 'TODOLIST
 'TODOLIST
 Private Sub Form_Load()
-     Call InitConexao
+     Call InitConexao(Me)
      Call reloadListTasks(Me)
      Call historicoConsultarTasks(Me)
 End Sub
