@@ -389,8 +389,8 @@ ErroNoCadastroDeSerie:
                cmdMusica.Execute
                
                MsgBox "Cadastro realizado com sucesso", vbExclamation, "SUCESSO"
+               frmMedia.Show
                Unload Me
-               Load frmMedia
           Exit Sub
 
 ErroNoCadastroDeMusica:
@@ -403,6 +403,17 @@ ErroNoCadastroDeMusica:
 
 End Sub
 
+
+Private Sub btnVoltar_Click()
+frmMedia.Show
+Unload Me
+End Sub
+
+Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
+frmMedia.Show
+Unload Me
+
+End Sub
 
 Private Sub cboTipo_Click()
      Call AtualizarCamposPorTipo(Me)

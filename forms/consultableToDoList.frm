@@ -1,7 +1,7 @@
 VERSION 5.00
 Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TabCtl32.Ocx"
 Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "MSFlxGrd.ocx"
-Begin VB.Form ConsultableToDoList 
+Begin VB.Form frmConsultableToDoList 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "TodoList"
    ClientHeight    =   8535
@@ -246,7 +246,7 @@ Begin VB.Form ConsultableToDoList
       End
    End
 End
-Attribute VB_Name = "ConsultableToDoList"
+Attribute VB_Name = "frmConsultableToDoList"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
@@ -290,8 +290,8 @@ Private Sub Form_Resize()
           .TextMatrix(0, 0) = "Tarefa"
           .TextMatrix(0, 1) = "Status"
       
-          .colWidth(0) = 10000
-          .colWidth(1) = 15000
+          .ColWidth(0) = 10000
+          .ColWidth(1) = 15000
     End With
 End Sub
 

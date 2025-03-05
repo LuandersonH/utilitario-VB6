@@ -79,8 +79,10 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Private Sub btnMedia_Click()
 frmMedia.Show
+Unload Me
 End Sub
 
 Private Sub btnVehicles_Click()
 frmVehicles.Show
+Unload Me
 End Sub

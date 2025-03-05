@@ -1,10 +1,11 @@
 VERSION 5.00
 Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "MSFlxGrd.ocx"
 Begin VB.Form frmMedia 
-   Caption         =   "Mídias"
+   BorderStyle     =   1  'Fixed Single
+   Caption         =   "Mï¿½dias"
    ClientHeight    =   7755
-   ClientLeft      =   60
-   ClientTop       =   405
+   ClientLeft      =   45
+   ClientTop       =   390
    ClientWidth     =   14790
    BeginProperty Font 
       Name            =   "Tahoma"
@@ -16,13 +17,13 @@ Begin VB.Form frmMedia
       Strikethrough   =   0   'False
    EndProperty
    LinkTopic       =   "Form1"
+   MaxButton       =   0   'False
    ScaleHeight     =   7755
    ScaleWidth      =   14790
-   ShowInTaskbar   =   0   'False
    StartUpPosition =   3  'Windows Default
-   Begin VB.CommandButton btnDeleteMídia 
+   Begin VB.CommandButton btnDeleteMï¿½dia 
       BackColor       =   &H00C0FFFF&
-      Caption         =   "EXCLUÍR MÍDIA"
+      Caption         =   "EXCLUï¿½R Mï¿½DIA"
       Height          =   930
       Left            =   6870
       Style           =   1  'Graphical
@@ -32,7 +33,7 @@ Begin VB.Form frmMedia
    End
    Begin VB.CommandButton btnAddMedia 
       BackColor       =   &H00C0FFFF&
-      Caption         =   "ADICIONAR MÍDIA"
+      Caption         =   "ADICIONAR Mï¿½DIA"
       Height          =   960
       Left            =   45
       Style           =   1  'Graphical
@@ -72,13 +73,16 @@ Begin VB.Form frmMedia
    Begin MSFlexGridLib.MSFlexGrid GridMedia 
       Height          =   5415
       Left            =   0
-      TabIndex        =   2
+      TabIndex        =   1
       Top             =   1320
       Width           =   14745
       _ExtentX        =   26009
       _ExtentY        =   9551
       _Version        =   393216
       Rows            =   1
+      Cols            =   0
+      FixedRows       =   0
+      FixedCols       =   0
       RowHeightMin    =   500
       WordWrap        =   -1  'True
       GridLinesFixed  =   1
@@ -88,7 +92,7 @@ Begin VB.Form frmMedia
    Begin VB.Label lblMediaInput 
       AutoSize        =   -1  'True
       BackStyle       =   0  'Transparent
-      Caption         =   "PESQUISE PELAS MÍDIAS"
+      Caption         =   "PESQUISE PELAS Mï¿½DIAS"
       BeginProperty Font 
          Name            =   "Tahoma"
          Size            =   14.25
@@ -100,7 +104,7 @@ Begin VB.Form frmMedia
       EndProperty
       Height          =   345
       Left            =   5430
-      TabIndex        =   1
+      TabIndex        =   2
       Top             =   60
       Width           =   3855
    End
@@ -124,25 +128,49 @@ End Sub
 
 Private Sub btnAddMedia_Click()
 frmMediaAdicionar.Show
+Unload Me
 End Sub
 
 Private Sub btnReloadList_Click()
-On Error GoTo erroAoCarregarMidias
-     Dim queryUnionFilmesSeriesMusicas As String
+Call UnionFilmesSeriesMusicas
+Call CarregarTodasAsMedias(Me)
+GridMedia.BackColor = vbWhite 'grid sem ser o fixed
+'GridMedia.GridColorFixed = vbBlack
+GridMedia.BackColorFixed = vbRed
+End Sub
+
+'Private Sub inputMediaFilter_Change()
+'Dim textoDoInputMedia As String
+'textoDoInputMedia = inputMediaFilter.Text
+
+'Call UnionFilmesSeriesMusicas
+
+'MsgBox textoDoInputMedia
+
+'queryInputMediaFilter = "SELECT * From " & UnionFilmesSeriesMusicas & " WHERE Nome LIKE " * " & textoDoInputMedia & " * ""
+'queryInputMediaFilter = "SELECT * FROM (" & UnionFilmesSeriesMusicas & ") AS Midia WHERE Nome LIKE '*" & textoDoInputMedia & "*'"
+'End Sub
+
+Private Sub inputMediaFilter_Change()
+     Dim textoDoInputMedia As String
+     Dim queryInputMediaFilter As String
+     Dim queryUnion As String
      Dim linhaAtualMedia As Integer
-     
-     'campos no BD: CODIGO - NOME - DIRETOR - ATORES - TEMPORADAS - GENERO - NOTA - OBSERVAÇÃO - ARTISTA - PARTICIPANTES - ALBUM - DURAÇÃO
 
-     queryUnionFilmesSeriesMusicas = "SELECT Codigo, Nome, Diretor, Atores, 0 AS Temporadas, Genero, Nota, Observacao, Null AS Artista, Null AS Participantes, Null AS Album, Duracao FROM Filmes " & _
-     "UNION ALL " & _
-     "SELECT Codigo, Nome, Diretor, Atores, Temporadas, Genero, Nota, Observacao, Null AS Artista, Null AS Participantes, Null AS Album, Null AS Duracao FROM Series " & _
-     "UNION ALL " & _
-      "SELECT Codigo, Nome, Null AS Diretor, Null AS Atores, Null AS Temporadas, Genero, Nota, Observacao, Artista, Participantes, Album, Null AS Duracao FROM Musicas"
+    textoDoInputMedia = inputMediaFilter.Text
+    Call UnionFilmesSeriesMusicas
 
+    ' Corrigir a construcao do filtro com LIKE
+    queryInputMediaFilter = "SELECT * FROM (" & UnionFilmesSeriesMusicas & ") AS Midia WHERE Nome LIKE '%" & textoDoInputMedia & "%'"
+
+
+    ' Mensagem de depuracao para verificar se a query final estï¿½ correta
+    Debug.Print queryInputMediaFilter
+    
      If connectBD.State = adStateClosed Then connectBD.Open
 
      If recordBD.State = adStateOpen Then recordBD.Close
-          recordBD.Open queryUnionFilmesSeriesMusicas, connectBD, adOpenStatic, adLockReadOnly
+          recordBD.Open queryInputMediaFilter, connectBD, adOpenStatic, adLockReadOnly
 
      With GridMedia
                .Clear
@@ -160,6 +188,19 @@ On Error GoTo erroAoCarregarMidias
                .TextMatrix(0, 9) = "Participantes"
                .TextMatrix(0, 10) = "Album"
                .TextMatrix(0, 11) = "Duracao"
+
+               .ColWidth(0) = Width / 12
+               .ColWidth(1) = Width / 12
+               .ColWidth(2) = Width / 12
+               .ColWidth(3) = Width / 12
+               .ColWidth(4) = Width / 12
+               .ColWidth(5) = Width / 12
+               .ColWidth(6) = Width / 12
+               .ColWidth(7) = Width / 12
+               .ColWidth(8) = Width / 12
+               .ColWidth(9) = Width / 12
+               .ColWidth(10) = Width / 12
+               .ColWidth(11) = Width / 12
      End With
 
      linhaAtualMedia = 1
@@ -187,10 +228,5 @@ On Error GoTo erroAoCarregarMidias
       Wend
 
      recordBD.Close
-     Exit Sub
-
-erroAoCarregarMidias:
-MsgBox "Erro ao carregar midias: " & Err.Number & " - " & Err.Description, vbCritical, "ERRO!"
- If recordBD.State = adStateOpen Then recordBD.Close
 End Sub
 
