@@ -6,5 +6,5 @@ modConectarBD = 156, 156, 1152, 619, C
 frmFavorites = 130, 130, 1372, 570, C, 104, 104, 1346, 544, C
 frmMedia = 26, 26, 1268, 466, Z, 130, 130, 1372, 570, C
 frmVehicles = 0, 0, 0, 0, C, 156, 156, 1398, 596, C
-frmMediaAdicionar = 0, 0, 1242, 440, C, 130, 130, 1372, 570, C
+frmMediaAdicionar = 0, 0, 1242, 440, , 130, 130, 1372, 570, C
 modClientes = 52, 52, 1307, 642, 

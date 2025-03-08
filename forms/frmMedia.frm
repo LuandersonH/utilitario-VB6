@@ -21,6 +21,16 @@ Begin VB.Form frmMedia
    ScaleHeight     =   7755
    ScaleWidth      =   14790
    StartUpPosition =   3  'Windows Default
+   Begin VB.CommandButton btnVoltarMedia 
+      BackColor       =   &H00C0FFFF&
+      Caption         =   "VOLTAR"
+      Height          =   885
+      Left            =   10185
+      Style           =   1  'Graphical
+      TabIndex        =   6
+      Top             =   6750
+      Width           =   3285
+   End
    Begin VB.CommandButton btnDeleteM�dia 
       BackColor       =   &H00C0FFFF&
       Caption         =   "EXCLU�R M�DIA"
@@ -139,6 +149,15 @@ GridMedia.BackColor = vbWhite 'grid sem ser o fixed
 GridMedia.BackColorFixed = vbRed
 End Sub
 
+Private Sub btnVoltarMedia_Click()
+frmFavorites.Show
+Unload Me
+End Sub
+
+Private Sub Form_Load()
+     Call centralizarForm(Me)
+End Sub
+
 'Private Sub inputMediaFilter_Change()
 'Dim textoDoInputMedia As String
 'textoDoInputMedia = inputMediaFilter.Text
@@ -155,22 +174,25 @@ Private Sub inputMediaFilter_Change()
      Dim textoDoInputMedia As String
      Dim queryInputMediaFilter As String
      Dim queryUnion As String
-     Dim linhaAtualMedia As Integer
+      Dim linhaAtualMedia As Integer
 
-    textoDoInputMedia = inputMediaFilter.Text
-    Call UnionFilmesSeriesMusicas
+     'query parametrizada
+      Dim cmdInputMedia As New ADODB.Command
+      Set cmdInputMedia = New ADODB.Command
 
-    ' Corrigir a construcao do filtro com LIKE
-    queryInputMediaFilter = "SELECT * FROM (" & UnionFilmesSeriesMusicas & ") AS Midia WHERE Nome LIKE '%" & textoDoInputMedia & "%'"
+     'conecta ao BD
+      If connectBD.State = adStateClosed Then connectBD.Open
+     cmdInputMedia.ActiveConnection = connectBD
 
+   queryUnion = UnionFilmesSeriesMusicas
+     cmdInputMedia.CommandText = "SELECT * FROM (" & queryUnion & ") WHERE Nome LIKE ?"
 
-    ' Mensagem de depuracao para verificar se a query final est� correta
-    Debug.Print queryInputMediaFilter
     
-     If connectBD.State = adStateClosed Then connectBD.Open
+   cmdInputMedia.Parameters.Append cmdInputMedia.CreateParameter(, adVarChar, adParamInput, 255, "%" & inputMediaFilter.Text & "%")
+
 
      If recordBD.State = adStateOpen Then recordBD.Close
-          recordBD.Open queryInputMediaFilter, connectBD, adOpenStatic, adLockReadOnly
+     Set recordBD = cmdInputMedia.Execute
 
      With GridMedia
                .Clear

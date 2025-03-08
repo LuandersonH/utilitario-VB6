@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin VB.Form frmHome 
    BackColor       =   &H00E0E0E0&
-   Caption         =   "UTILITÁRIO"
+   Caption         =   "UTILITï¿½RIO"
    ClientHeight    =   7980
    ClientLeft      =   60
    ClientTop       =   405
@@ -126,30 +126,29 @@ End Sub
 
 Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
 
-    If MsgBox("ENCERRAR O PROGRAMA?", vbYesNo + vbQuestion, "E N C E R R A R") = vbNo Then
-     Cancel = 1
+    If MsgBox("ENCERRAR O PROGRAMA?", vbYesNo + vbQuestion, "E N C E R R A R") = vbYes Then
+      End
      Else
-          End
+      Cancel = 1
      End If
 
 End Sub
 
 Private Sub Form_Load()
-     'Abre maximizado
-    Me.Left = 0
-    Me.Top = 0
     Me.Width = (Screen.Width - 8000)
     Me.Height = (Screen.Height - 5000)
+
+     Call centralizarForm(Me)
 
      'Conecta ao banco de dados
      Call InitConexao(Me)
 End Sub
 
 Private Sub Form_Paint()
-'Me.Line (x1, y1) - (x2, y2), cor, [opção]
-'-(x1, y1): Coordenadas do ponto inicial (canto superior esquerdo do retângulo).
-'-(x2, y2): Coordenadas do ponto final (canto inferior direito do retângulo).
-'-[opção]: Se for B, desenha apenas a borda. Se for BF, preenche o retângulo.
+'Me.Line (x1, y1) - (x2, y2), cor, [opï¿½ï¿½o]
+'-(x1, y1): Coordenadas do ponto inicial (canto superior esquerdo do retangulo).
+'-(x2, y2): Coordenadas do ponto final (canto inferior direito do retangulo).
+'-[opï¿½ï¿½o]: Se for B, desenha apenas a borda. Se for BF, preenche o retangulo.
 
      'limpa o paint
      Cls
@@ -173,7 +172,7 @@ Private Sub Form_Resize()
     minWidth = 14000
     minHeight = 8000
 
-    ' Se estiver menor que o mínimo, retorna ao tamanho anterior
+    ' Se estiver menor que o mï¿½nimo, retorna ao tamanho anterior
     If Me.Width <= minWidth Then Me.Width = minWidth
     If Me.Height <= minHeight Then Me.Height = minHeight
 

@@ -40,13 +40,13 @@ Begin VB.Form frmConsultableToDoList
       TabCaption(0)   =   "Lista de tarefas"
       TabPicture(0)   =   "ConsultableToDoList.frx":0000
       Tab(0).ControlEnabled=   0   'False
-      Tab(0).Control(0)=   "lblTodolist"
-      Tab(0).Control(1)=   "listTasks"
-      Tab(0).Control(2)=   "tboxInsertTask"
+      Tab(0).Control(0)=   "btnClearAll"
+      Tab(0).Control(1)=   "btnFinishedTask"
+      Tab(0).Control(2)=   "btnDeleteTask"
       Tab(0).Control(3)=   "btnInsertTask"
-      Tab(0).Control(4)=   "btnDeleteTask"
-      Tab(0).Control(5)=   "btnFinishedTask"
-      Tab(0).Control(6)=   "btnClearAll"
+      Tab(0).Control(4)=   "tboxInsertTask"
+      Tab(0).Control(5)=   "listTasks"
+      Tab(0).Control(6)=   "lblTodolist"
       Tab(0).ControlCount=   7
       TabCaption(1)   =   "Histórico"
       TabPicture(1)   =   "ConsultableToDoList.frx":001C
@@ -256,6 +256,7 @@ Dim handleTaskValue As String
 'TODOLIST
 'TODOLIST
 Private Sub Form_Load()
+     Call centralizarForm(Me)
      Call InitConexao(Me)
      Call reloadListTasks(Me)
      Call historicoConsultarTasks(Me)

@@ -445,3 +445,6 @@ Private Sub display_KeyPress(KeyAscii As Integer)
 End Sub
 
 
+Private Sub Form_Load()
+         Call centralizarForm(Me)
+End Sub

@@ -1,4 +1,9 @@
 Attribute VB_Name = "mod_Funcoes_ToDoList"
+Public Function centralizarForm(frm)
+    frm.Left = (Screen.Width / 2) - (frm.Width / 2)
+    frm.Top = (Screen.Height / 2) - (frm.Height / 2)
+End Function
+
 Public Function reloadListTasks(frm As Object)
     Dim querySelectTasksPendentes As String
    querySelectTasksPendentes = "SELECT Codigo, Descricao FROM Tasks WHERE Status = 'PENDENTE' ORDER BY Codigo ASC"

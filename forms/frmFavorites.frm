@@ -86,3 +86,7 @@ Private Sub btnVehicles_Click()
 frmVehicles.Show
 Unload Me
 End Sub
+
+Private Sub Form_Load()
+     Call centralizarForm(Me)
+End Sub

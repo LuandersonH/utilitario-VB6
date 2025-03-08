@@ -13,7 +13,7 @@ Public Function CarregarTodasAsMedias(frm)
 On Error GoTo erroAoCarregarMidias
      Dim linhaAtualMedia As Integer
      
-     'campos  totais no BD: CODIGO - NOME - DIRETOR - ATORES - TEMPORADAS - GENERO - NOTA - OBSERVAÇÃO - ARTISTA - PARTICIPANTES - ALBUM - DURAÇÃO
+     'campos  totais no BD, apÃ³s Union All: CODIGO - NOME - DIRETOR - ATORES - TEMPORADAS - GENERO - NOTA - OBSERVAï¿½ï¿½O - ARTISTA - PARTICIPANTES - ALBUM - DURAï¿½ï¿½O
 
 
      If connectBD.State = adStateClosed Then connectBD.Open
@@ -91,8 +91,8 @@ End Function
 
 
 Public Function AtualizarCamposPorTipo(frm)
-     ' Trim vai remover os espaços em branco
-     ' UCase vai deixar os textos maiúsculos, caso seja digitado de outra forma
+     ' Trim vai remover os espaï¿½os em branco
+     ' UCase vai deixar os textos maiï¿½sculos, caso seja digitado de outra forma
      Select Case Trim(UCase(frm.cboTipo.Text))
           Case "FILME"
                frm.lblNome.Caption = "Nome do filme"
@@ -107,14 +107,14 @@ Public Function AtualizarCamposPorTipo(frm)
                frm.txtAtoresParticipantes.Tag = "tagAtores"
                frm.txtAtoresParticipantes.Text = ""
 
-               ' Álbum para Duração
-               frm.lblDuracao.Caption = "Duração"
+               ' ï¿½lbum para Duraï¿½ï¿½o
+               frm.lblDuracao.Caption = "Duraï¿½ï¿½o"
                frm.txtDuracaoTemporadasAlbum.Tag = "tagDuracao"
                frm.txtDuracaoTemporadasAlbum.MaxLength = 5
                 frm.txtDuracaoTemporadasAlbum.Text = ""
                
           Case "SERIE"
-               frm.lblNome.Caption = "Nome da série"
+               frm.lblNome.Caption = "Nome da sï¿½rie"
 
                ' Artista para Diretor
                frm.lblDiretor.Caption = "Diretor"
@@ -126,14 +126,14 @@ Public Function AtualizarCamposPorTipo(frm)
                frm.txtAtoresParticipantes.Tag = "tagAtores"
                frm.txtAtoresParticipantes.Text = ""
 
-               ' Duração para Temporadas
+               ' Duraï¿½ï¿½o para Temporadas
                frm.lblDuracao.Caption = "Temporadas"
                frm.txtDuracaoTemporadasAlbum.Tag = "tagTemporadas"
                frm.txtDuracaoTemporadasAlbum.MaxLength = 2
                frm.txtDuracaoTemporadasAlbum.Text = ""
 
           Case "MUSICA"
-               frm.lblNome.Caption = "Nome da música"
+               frm.lblNome.Caption = "Nome da mï¿½sica"
 
                ' Diretor para Artista
                frm.lblDiretor.Caption = "Artista"
@@ -145,13 +145,10 @@ Public Function AtualizarCamposPorTipo(frm)
                frm.txtAtoresParticipantes.Tag = "tagParticipantes"
                frm.txtAtoresParticipantes.Text = ""
 
-               ' Duração para Álbum
-               frm.lblDuracao.Caption = "Álbum"
+               ' Duraï¿½ï¿½o para ï¿½lbum
+               frm.lblDuracao.Caption = "ï¿½lbum"
                frm.txtDuracaoTemporadasAlbum.Tag = "tagAlbum"
                frm.txtDuracaoTemporadasAlbum.MaxLength = 255
                frm.txtDuracaoTemporadasAlbum.Text = ""
      End Select
 End Function
-
-
-

@@ -426,6 +426,8 @@ Private Sub Form_Load()
           cboNota.AddItem i
      Next i
 
+     Call centralizarForm(Me)
+
 End Sub
 
 Private Sub txtDuracaoTemporadasAlbum_KeyPress(KeyAscii As Integer)
