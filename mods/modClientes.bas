@@ -1,11 +1,11 @@
 Attribute VB_Name = "modClientes"
 Public Function UnionFilmesSeriesMusicas()
 
-UnionFilmesSeriesMusicas = "SELECT Codigo, Nome, Diretor, Atores, 0 AS Temporadas, Genero, Nota, Observacao, Null AS Artista, Null AS Participantes, Null AS Album, Duracao FROM Filmes " & _
+UnionFilmesSeriesMusicas = "SELECT Codigo, Nome, Diretor, Atores, 0 AS Temporadas, Genero, Nota, Observacao, Null AS Artista, Null AS Participantes, Null AS Album, Duracao, Tipo FROM Filmes " & _
      "UNION ALL " & _
-     "SELECT Codigo, Nome, Diretor, Atores, Temporadas, Genero, Nota, Observacao, Null AS Artista, Null AS Participantes, Null AS Album, Null AS Duracao FROM Series " & _
+     "SELECT Codigo, Nome, Diretor, Atores, Temporadas, Genero, Nota, Observacao, Null AS Artista, Null AS Participantes, Null AS Album, Null AS Duracao, Tipo FROM Series " & _
      "UNION ALL " & _
-      "SELECT Codigo, Nome, Null AS Diretor, Null AS Atores, Null AS Temporadas, Genero, Nota, Observacao, Artista, Participantes, Album, Null AS Duracao FROM Musicas"
+      "SELECT Codigo, Nome, Null AS Diretor, Null AS Atores, Null AS Temporadas, Genero, Nota, Observacao, Artista, Participantes, Album, Null AS Duracao, Tipo FROM Musicas"
 
 End Function
 
@@ -13,7 +13,7 @@ Public Function CarregarTodasAsMedias(frm)
 On Error GoTo erroAoCarregarMidias
      Dim linhaAtualMedia As Integer
      
-     'campos  totais no BD, após Union All: CODIGO - NOME - DIRETOR - ATORES - TEMPORADAS - GENERO - NOTA - OBSERVA��O - ARTISTA - PARTICIPANTES - ALBUM - DURA��O
+     'campos  totais no BD, apos Union All: CODIGO - NOME - DIRETOR - ATORES - TEMPORADAS - GENERO - NOTA - OBSERVA��O - ARTISTA - PARTICIPANTES - ALBUM - DURACAO - TIPO
 
 
      If connectBD.State = adStateClosed Then connectBD.Open
@@ -23,7 +23,7 @@ On Error GoTo erroAoCarregarMidias
 
      With frm.GridMedia
                .Clear
-               .Cols = 12
+               .Cols = 13
                .Rows = 1
                .TextMatrix(0, 0) = "Codigo"
                .TextMatrix(0, 1) = "Nome"
@@ -37,6 +37,7 @@ On Error GoTo erroAoCarregarMidias
                .TextMatrix(0, 9) = "Participantes"
                .TextMatrix(0, 10) = "Album"
                .TextMatrix(0, 11) = "Duracao"
+               .TextMatrix(0, 12) = "Tipo"
 
                .ColWidth(0) = frm.Width / 12
                .ColWidth(1) = frm.Width / 12
@@ -70,6 +71,7 @@ On Error GoTo erroAoCarregarMidias
                .TextMatrix(linhaAtualMedia, 9) = IIf(IsNull(recordBD!Participantes), "", recordBD!Participantes)
                .TextMatrix(linhaAtualMedia, 10) = IIf(IsNull(recordBD!Album), "", recordBD!Album)
                .TextMatrix(linhaAtualMedia, 11) = IIf(IsNull(recordBD!Duracao), "", recordBD!Duracao)
+               .TextMatrix(linhaAtualMedia, 12) = IIf(IsNull(recordBD!Tipo), "", recordBD!Tipo)
 
                recordBD.MoveNext
                linhaAtualMedia = linhaAtualMedia + 1

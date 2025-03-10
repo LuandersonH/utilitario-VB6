@@ -21,7 +21,7 @@ Begin VB.Form frmHome
    StartUpPosition =   3  'Windows Default
    Begin VB.Frame frameFavoritos 
       BackColor       =   &H00FFFFFF&
-      Caption         =   "FAVORITOS"
+      Caption         =   "MIDIAS FAVORITAS"
       Height          =   3540
       Left            =   10200
       TabIndex        =   2
@@ -111,7 +111,7 @@ frmCalculator.Show
 End Sub
 
 Private Sub btnEntrarFavoritos_Click()
-frmFavorites.Show
+frmMedia.Show
 End Sub
 
 

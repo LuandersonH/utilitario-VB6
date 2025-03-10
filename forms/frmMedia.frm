@@ -31,9 +31,9 @@ Begin VB.Form frmMedia
       Top             =   6750
       Width           =   3285
    End
-   Begin VB.CommandButton btnDeleteM�dia 
+   Begin VB.CommandButton btnDeleteMedia 
       BackColor       =   &H00C0FFFF&
-      Caption         =   "EXCLU�R M�DIA"
+      Caption         =   "EXCLUIR MIDIA"
       Height          =   930
       Left            =   6870
       Style           =   1  'Graphical
@@ -43,7 +43,7 @@ Begin VB.Form frmMedia
    End
    Begin VB.CommandButton btnAddMedia 
       BackColor       =   &H00C0FFFF&
-      Caption         =   "ADICIONAR M�DIA"
+      Caption         =   "ADICIONAR MIDIA"
       Height          =   960
       Left            =   45
       Style           =   1  'Graphical
@@ -55,7 +55,7 @@ Begin VB.Form frmMedia
       BackColor       =   &H00C0FFFF&
       Caption         =   "RECARREGAR LISTA"
       Height          =   960
-      Left            =   3465
+      Left            =   3450
       Style           =   1  'Graphical
       TabIndex        =   3
       Top             =   6735
@@ -102,7 +102,7 @@ Begin VB.Form frmMedia
    Begin VB.Label lblMediaInput 
       AutoSize        =   -1  'True
       BackStyle       =   0  'Transparent
-      Caption         =   "PESQUISE PELAS M�DIAS"
+      Caption         =   "PESQUISE PELAS MIDIAS"
       BeginProperty Font 
          Name            =   "Tahoma"
          Size            =   14.25
@@ -116,7 +116,7 @@ Begin VB.Form frmMedia
       Left            =   5430
       TabIndex        =   2
       Top             =   60
-      Width           =   3855
+      Width           =   3660
    End
 End
 Attribute VB_Name = "frmMedia"
@@ -141,6 +141,24 @@ frmMediaAdicionar.Show
 Unload Me
 End Sub
 
+Private Sub btnDeleteMedia_Click()
+ Dim deleteMediaSelecionada As Integer
+ Dim tipoMediaSelecionada As String
+
+          codigoMediaSelecionada = GridMedia.TextMatrix(GridMedia.Row, 0)
+          tipoMediaSelecionada = GridMedia.TextMatrix(GridMedia.Row, 12)
+          MsgBox "Apagar: " & codigoMediaSelecionada & " De: " & tipoMediaSelecionada
+
+       'On Error GoTo erroDeleteMedia
+      'If deleteMediaSelecionada <> -1 Then
+          'queryDeletarMedia = DELETE FROM
+
+'erroDeleteMedia:
+'MsgBox "Erro: " & Err.Number & " - " & Err.Description, vbCritical, "E R R O !"
+
+
+End Sub
+
 Private Sub btnReloadList_Click()
 Call UnionFilmesSeriesMusicas
 Call CarregarTodasAsMedias(Me)
@@ -150,25 +168,13 @@ GridMedia.BackColorFixed = vbRed
 End Sub
 
 Private Sub btnVoltarMedia_Click()
-frmFavorites.Show
+frmHome.Show
 Unload Me
 End Sub
 
 Private Sub Form_Load()
      Call centralizarForm(Me)
 End Sub
-
-'Private Sub inputMediaFilter_Change()
-'Dim textoDoInputMedia As String
-'textoDoInputMedia = inputMediaFilter.Text
-
-'Call UnionFilmesSeriesMusicas
-
-'MsgBox textoDoInputMedia
-
-'queryInputMediaFilter = "SELECT * From " & UnionFilmesSeriesMusicas & " WHERE Nome LIKE " * " & textoDoInputMedia & " * ""
-'queryInputMediaFilter = "SELECT * FROM (" & UnionFilmesSeriesMusicas & ") AS Midia WHERE Nome LIKE '*" & textoDoInputMedia & "*'"
-'End Sub
 
 Private Sub inputMediaFilter_Change()
      Dim textoDoInputMedia As String
@@ -182,10 +188,11 @@ Private Sub inputMediaFilter_Change()
 
      'conecta ao BD
       If connectBD.State = adStateClosed Then connectBD.Open
+     'conect o commnd ao bd
      cmdInputMedia.ActiveConnection = connectBD
 
    queryUnion = UnionFilmesSeriesMusicas
-     cmdInputMedia.CommandText = "SELECT * FROM (" & queryUnion & ") WHERE Nome LIKE ?"
+  cmdInputMedia.CommandText = "SELECT * FROM (" & queryUnion & ") WHERE Nome LIKE ?"
 
     
    cmdInputMedia.Parameters.Append cmdInputMedia.CreateParameter(, adVarChar, adParamInput, 255, "%" & inputMediaFilter.Text & "%")
@@ -210,6 +217,7 @@ Private Sub inputMediaFilter_Change()
                .TextMatrix(0, 9) = "Participantes"
                .TextMatrix(0, 10) = "Album"
                .TextMatrix(0, 11) = "Duracao"
+                TextMatrix(0, 12) = "Tipo"
 
                .ColWidth(0) = Width / 12
                .ColWidth(1) = Width / 12
@@ -243,8 +251,9 @@ Private Sub inputMediaFilter_Change()
                .TextMatrix(linhaAtualMedia, 9) = IIf(IsNull(recordBD!Participantes), "", recordBD!Participantes)
                .TextMatrix(linhaAtualMedia, 10) = IIf(IsNull(recordBD!Album), "", recordBD!Album)
                .TextMatrix(linhaAtualMedia, 11) = IIf(IsNull(recordBD!Duracao), "", recordBD!Duracao)
-
-               recordBD.MoveNext
+               .TextMatrix(linhaAtualMedia, 12) = IIf(IsNull(recordBD!Tipo), "", recordBD!Tipo)
+               
+recordBD.MoveNext
                linhaAtualMedia = linhaAtualMedia + 1
           End With
       Wend
