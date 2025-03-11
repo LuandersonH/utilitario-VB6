@@ -9,18 +9,8 @@ UnionFilmesSeriesMusicas = "SELECT Codigo, Nome, Diretor, Atores, 0 AS Temporada
 
 End Function
 
-Public Function CarregarTodasAsMedias(frm)
-On Error GoTo erroAoCarregarMidias
-     Dim linhaAtualMedia As Integer
-     
-     'campos  totais no BD, apos Union All: CODIGO - NOME - DIRETOR - ATORES - TEMPORADAS - GENERO - NOTA - OBSERVA��O - ARTISTA - PARTICIPANTES - ALBUM - DURACAO - TIPO
 
-
-     If connectBD.State = adStateClosed Then connectBD.Open
-
-     If recordBD.State = adStateOpen Then recordBD.Close
-          recordBD.Open UnionFilmesSeriesMusicas, connectBD, adOpenStatic, adLockReadOnly
-
+Public Function setarColunasIniciaisDoGridMedia(frm)
      With frm.GridMedia
                .Clear
                .Cols = 13
@@ -52,7 +42,10 @@ On Error GoTo erroAoCarregarMidias
                .ColWidth(10) = frm.Width / 12
                .ColWidth(11) = frm.Width / 12
      End With
+End Function
 
+Public Function inserirDadosDoRecordSetNoGridMedia(frm)
+     Dim linhaAtualMedia As Integer
      linhaAtualMedia = 1
 
      While Not recordBD.EOF
@@ -72,11 +65,27 @@ On Error GoTo erroAoCarregarMidias
                .TextMatrix(linhaAtualMedia, 10) = IIf(IsNull(recordBD!Album), "", recordBD!Album)
                .TextMatrix(linhaAtualMedia, 11) = IIf(IsNull(recordBD!Duracao), "", recordBD!Duracao)
                .TextMatrix(linhaAtualMedia, 12) = IIf(IsNull(recordBD!Tipo), "", recordBD!Tipo)
-
+               
                recordBD.MoveNext
                linhaAtualMedia = linhaAtualMedia + 1
           End With
       Wend
+End Function
+
+Public Function CarregarTodasAsMedias(frm)
+On Error GoTo erroAoCarregarMidias
+     
+     
+     'campos  totais no BD, apos Union All: CODIGO - NOME - DIRETOR - ATORES - TEMPORADAS - GENERO - NOTA - OBSERVA��O - ARTISTA - PARTICIPANTES - ALBUM - DURACAO - TIPO
+
+
+     If connectBD.State = adStateClosed Then connectBD.Open
+
+     If recordBD.State = adStateOpen Then recordBD.Close
+          recordBD.Open UnionFilmesSeriesMusicas, connectBD, adOpenStatic, adLockReadOnly
+
+      Call setarColunasIniciaisDoGridMedia(frm)
+     Call inserirDadosDoRecordSetNoGridMedia(frm)
 
      recordBD.Close
      Exit Function
@@ -84,6 +93,37 @@ On Error GoTo erroAoCarregarMidias
 erroAoCarregarMidias:
 MsgBox "Erro ao carregar midias: " & Err.Number & " - " & Err.Description, vbCritical, "ERRO!"
  If recordBD.State = adStateOpen Then recordBD.Close
+End Function
+
+Public Function pesquisarNoInputMediaFilterComLike(frm)
+          Dim textoDoInputMedia As String
+     Dim queryInputMediaFilter As String
+     Dim queryUnion As String
+
+
+     'query parametrizada
+      Dim cmdInputMedia As New ADODB.Command
+      Set cmdInputMedia = New ADODB.Command
+
+     'conecta ao BD
+      If connectBD.State = adStateClosed Then connectBD.Open
+     'conect o commnd ao bd
+     cmdInputMedia.ActiveConnection = connectBD
+
+   queryUnion = UnionFilmesSeriesMusicas
+  cmdInputMedia.CommandText = "SELECT * FROM (" & queryUnion & ") WHERE Nome LIKE ?"
+
+    
+   cmdInputMedia.Parameters.Append cmdInputMedia.CreateParameter(, adVarChar, adParamInput, 255, "%" & frm.inputMediaFilter.Text & "%")
+
+
+     If recordBD.State = adStateOpen Then recordBD.Close
+     Set recordBD = cmdInputMedia.Execute
+
+      Call setarColunasIniciaisDoGridMedia(frm)
+     Call inserirDadosDoRecordSetNoGridMedia(frm)
+
+     recordBD.Close
 End Function
 
 
