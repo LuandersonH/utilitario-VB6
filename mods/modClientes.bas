@@ -1,11 +1,11 @@
 Attribute VB_Name = "modClientes"
 Public Function UnionFilmesSeriesMusicas()
-
-UnionFilmesSeriesMusicas = "SELECT Codigo, Nome, Diretor, Atores, 0 AS Temporadas, Genero, Nota, Observacao, Null AS Artista, Null AS Participantes, Null AS Album, Duracao, Tipo FROM Filmes " & _
+ 'campos  totais no BD, apos Union All: CODIGO - NOME - DIRETOR - ATORES - TEMPORADAS - GENERO - NOTA - OBSERVA��O - ARTISTA - PARTICIPANTES - ALBUM - DURACAO - TIPO
+UnionFilmesSeriesMusicas = "SELECT Codigo, Nome, Diretor, Atores, 0 AS Temporadas, Genero, Nota, Observacao, Null AS Artista, Null AS Participantes, Null AS Album, Duracao, Tipo, Excluido FROM Filmes " & _
      "UNION ALL " & _
-     "SELECT Codigo, Nome, Diretor, Atores, Temporadas, Genero, Nota, Observacao, Null AS Artista, Null AS Participantes, Null AS Album, Null AS Duracao, Tipo FROM Series " & _
+     "SELECT Codigo, Nome, Diretor, Atores, Temporadas, Genero, Nota, Observacao, Null AS Artista, Null AS Participantes, Null AS Album, Null AS Duracao, Tipo, Excluido FROM Series " & _
      "UNION ALL " & _
-      "SELECT Codigo, Nome, Null AS Diretor, Null AS Atores, Null AS Temporadas, Genero, Nota, Observacao, Artista, Participantes, Album, Null AS Duracao, Tipo FROM Musicas"
+      "SELECT Codigo, Nome, Null AS Diretor, Null AS Atores, Null AS Temporadas, Genero, Nota, Observacao, Artista, Participantes, Album, Null AS Duracao, Tipo, Excluido FROM Musicas"
 
 End Function
 
@@ -76,9 +76,6 @@ Public Function CarregarTodasAsMedias(frm)
 On Error GoTo erroAoCarregarMidias
      
      
-     'campos  totais no BD, apos Union All: CODIGO - NOME - DIRETOR - ATORES - TEMPORADAS - GENERO - NOTA - OBSERVA��O - ARTISTA - PARTICIPANTES - ALBUM - DURACAO - TIPO
-
-
      If connectBD.State = adStateClosed Then connectBD.Open
 
      If recordBD.State = adStateOpen Then recordBD.Close

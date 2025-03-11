@@ -99,7 +99,7 @@ Begin VB.Form frmMedia
       BackColor       =   14737632
       BackColorFixed  =   14737632
       ForeColorFixed  =   0
-      BackColorSel    =   8454143
+      BackColorSel    =   12632256
       BackColorBkg    =   12648447
       GridColor       =   0
       WordWrap        =   -1  'True
