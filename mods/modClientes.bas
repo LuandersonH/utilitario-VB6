@@ -81,7 +81,7 @@ On Error GoTo erroAoCarregarMidias
      If recordBD.State = adStateOpen Then recordBD.Close
           recordBD.Open UnionFilmesSeriesMusicas, connectBD, adOpenStatic, adLockReadOnly
 
-      Call setarColunasIniciaisDoGridMedia(frm)
+     Call setarColunasIniciaisDoGridMedia(frm)
      Call inserirDadosDoRecordSetNoGridMedia(frm)
 
      recordBD.Close
@@ -93,7 +93,7 @@ MsgBox "Erro ao carregar midias: " & Err.Number & " - " & Err.Description, vbCri
 End Function
 
 Public Function pesquisarNoInputMediaFilterComLike(frm)
-          Dim textoDoInputMedia As String
+     Dim textoDoInputMedia As String
      Dim queryInputMediaFilter As String
      Dim queryUnion As String
 
@@ -106,9 +106,9 @@ Public Function pesquisarNoInputMediaFilterComLike(frm)
       If connectBD.State = adStateClosed Then connectBD.Open
      'conect o commnd ao bd
      cmdInputMedia.ActiveConnection = connectBD
-
-   queryUnion = UnionFilmesSeriesMusicas
-  cmdInputMedia.CommandText = "SELECT * FROM (" & queryUnion & ") WHERE Nome LIKE ?"
+     
+     queryUnion = UnionFilmesSeriesMusicas
+     cmdInputMedia.CommandText = "SELECT * FROM (" & queryUnion & ") WHERE Nome LIKE ?"
 
     
    cmdInputMedia.Parameters.Append cmdInputMedia.CreateParameter(, adVarChar, adParamInput, 255, "%" & frm.inputMediaFilter.Text & "%")

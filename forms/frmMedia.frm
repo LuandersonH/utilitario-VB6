@@ -152,24 +152,43 @@ End Sub
 
 Private Sub btnDeleteMedia_Click()
 On Error GoTo erroDeleteMedia
- Dim deleteMediaSelecionada As Integer
- Dim tipoMediaSelecionada As String
+   Dim codigoMediaSelecionada As Integer
+   Dim tipoMediaSelecionada As String
+   Dim nomeMediaSelecionada As String
+   Dim queryDeletarMedia As String
 
-          codigoMediaSelecionada = GridMedia.TextMatrix(GridMedia.Row, 0)
-          tipoMediaSelecionada = GridMedia.TextMatrix(GridMedia.Row, 12)
-          MsgBox "Apagar: " & codigoMediaSelecionada & " De: " & tipoMediaSelecionada
+   If GridMedia.Rows <= 1 Or GridMedia.Row <= 1 Then
+      MsgBox "Selecione uma midia para excluir!", vbExclamation
+      Exit Sub
+   End If
 
-       
-      'If deleteMediaSelecionada <> -1 Then
-          'queryDeletarMedia = DELETE FROM
+
+   codigoMediaSelecionada = GridMedia.TextMatrix(GridMedia.Row, 0)
+   tipoMediaSelecionada = GridMedia.TextMatrix(GridMedia.Row, 12)
+   nomeMediaSelecionada = GridMedia.TextMatrix(GridMedia.Row, 1)
+
+   If MsgBox("Realmente deseja excluir " & nomeMediaSelecionada & " De " & tipoMediaSelecionada & "?", vbYesNo, "E X C L U I R ?") = vbNo Then
+      Exit Sub
+   Else
+      If connectBD.State = adStateClosed Then connectBD.Open
+      queryDeletarMedia = "UPDATE " & tipoMediaSelecionada & " Set Excluido = 1 Where Codigo = " & codigoMediaSelecionada
+      connectBD.Execute queryDeletarMedia
+   End If
+   Exit Sub
 
 erroDeleteMedia:
-MsgBox "Erro: " & Err.Number & " - " & Err.Description, vbCritical, "E R R O !"
+   MsgBox "Erro: " & Err.Number & " - " & Err.Description, vbCritical, "E R R O !"
 End Sub
 
 Private Sub btnReloadList_Click()
-Call UnionFilmesSeriesMusicas
-Call CarregarTodasAsMedias(Me)
+   On Error GoTo erroAoRecarregarGridMedia
+
+   Call UnionFilmesSeriesMusicas
+   Call CarregarTodasAsMedias(Me)
+   Exit Sub
+
+erroAoRecarregarGridMedia:
+MsgBox "Erro: " & Err.Number & " - " & Err.Description, vbCritical, "E R R O !"
 End Sub
 
 Private Sub btnVoltarMedia_Click()
