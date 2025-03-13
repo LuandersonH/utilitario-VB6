@@ -9,7 +9,6 @@ UnionFilmesSeriesMusicas = "SELECT Codigo, Nome, Diretor, Atores, 0 AS Temporada
 
 End Function
 
-
 Public Function setarColunasIniciaisDoGridMedia(frm)
      With frm.GridMedia
                .Clear
@@ -80,8 +79,7 @@ End Function
 
 Public Function CarregarTodasAsMedias(frm)
 On Error GoTo erroAoCarregarMidias
-     
-     
+          
      If connectBD.State = adStateClosed Then connectBD.Open
 
      If recordBD.State = adStateOpen Then recordBD.Close
@@ -103,7 +101,6 @@ Public Function pesquisarNoInputMediaFilterComLike(frm)
      Dim queryInputMediaFilter As String
      Dim queryUnion As String
 
-
      'query parametrizada
       Dim cmdInputMedia As New ADODB.Command
       Set cmdInputMedia = New ADODB.Command
@@ -115,10 +112,8 @@ Public Function pesquisarNoInputMediaFilterComLike(frm)
      
      queryUnion = UnionFilmesSeriesMusicas
      cmdInputMedia.CommandText = "SELECT * FROM (" & queryUnion & ") WHERE Nome LIKE ?"
-
-    
-   cmdInputMedia.Parameters.Append cmdInputMedia.CreateParameter(, adVarChar, adParamInput, 255, "%" & frm.inputMediaFilter.Text & "%")
-
+   
+     cmdInputMedia.Parameters.Append cmdInputMedia.CreateParameter(, adVarChar, adParamInput, 255, "%" & frm.inputMediaFilter.Text & "%")
 
      If recordBD.State = adStateOpen Then recordBD.Close
      Set recordBD = cmdInputMedia.Execute
@@ -196,4 +191,88 @@ Public Function AtualizarCamposPorTipo(frm)
                frm.txtDuracaoTemporadasAlbum.MaxLength = 255
                frm.txtDuracaoTemporadasAlbum.Text = ""
      End Select
+End Function
+
+'frm EXCLUIDOS ABAIXO
+'frm EXCLUIDOS ABAIXO
+'frm EXCLUIDOS ABAIXO
+
+Public Function inserirDadosExcluidosDoRecordSetNoGridMedia(frm)
+     Dim linhaAtualMedia As Integer
+     linhaAtualMedia = 1
+
+     While Not recordBD.EOF
+          With frm.GridMedia
+               
+               If recordBD!Excluido <> 0 Then
+                    .Rows = frm.GridMedia.Rows + 1
+
+                    .TextMatrix(linhaAtualMedia, 0) = IIf(IsNull(recordBD!Codigo), 0, recordBD!Codigo)
+                    .TextMatrix(linhaAtualMedia, 1) = IIf(IsNull(recordBD!Nome), "", recordBD!Nome)
+                    .TextMatrix(linhaAtualMedia, 2) = IIf(IsNull(recordBD!Diretor), "", recordBD!Diretor)
+                    .TextMatrix(linhaAtualMedia, 3) = IIf(IsNull(recordBD!Atores), "", recordBD!Atores)
+                    .TextMatrix(linhaAtualMedia, 4) = IIf(IsNull(recordBD!Temporadas), 0, recordBD!Temporadas)
+                    .TextMatrix(linhaAtualMedia, 5) = IIf(IsNull(recordBD!Genero), "", recordBD!Genero)
+                    .TextMatrix(linhaAtualMedia, 6) = IIf(IsNull(recordBD!Nota), 0, recordBD!Nota)
+                    .TextMatrix(linhaAtualMedia, 7) = IIf(IsNull(recordBD!Observacao), "", recordBD!Observacao)
+                    .TextMatrix(linhaAtualMedia, 8) = IIf(IsNull(recordBD!Artista), "", recordBD!Artista)
+                    .TextMatrix(linhaAtualMedia, 9) = IIf(IsNull(recordBD!Participantes), "", recordBD!Participantes)
+                    .TextMatrix(linhaAtualMedia, 10) = IIf(IsNull(recordBD!Album), "", recordBD!Album)
+                    .TextMatrix(linhaAtualMedia, 11) = IIf(IsNull(recordBD!Duracao), "", recordBD!Duracao)
+                    .TextMatrix(linhaAtualMedia, 12) = IIf(IsNull(recordBD!Grupo), "", recordBD!Grupo)
+     
+                    linhaAtualMedia = linhaAtualMedia + 1
+               End If
+
+               recordBD.MoveNext
+
+          End With
+      Wend
+End Function
+
+Public Function pesquisarExcluidosNoInputMediaFilterComLike(frm)
+     Dim textoDoInputMedia As String
+     Dim queryInputMediaFilter As String
+     Dim queryUnion As String
+
+     'query parametrizada
+      Dim cmdInputMedia As New ADODB.Command
+      Set cmdInputMedia = New ADODB.Command
+
+     'conecta ao BD
+      If connectBD.State = adStateClosed Then connectBD.Open
+     'conect o commnd ao bd
+     cmdInputMedia.ActiveConnection = connectBD
+     
+     queryUnion = UnionFilmesSeriesMusicas
+     cmdInputMedia.CommandText = "SELECT * FROM (" & queryUnion & ") WHERE Nome LIKE ?"
+   
+     cmdInputMedia.Parameters.Append cmdInputMedia.CreateParameter(, adVarChar, adParamInput, 255, "%" & frm.inputMediaFilter.Text & "%")
+
+     If recordBD.State = adStateOpen Then recordBD.Close
+     Set recordBD = cmdInputMedia.Execute
+
+     Call setarColunasIniciaisDoGridMedia(frm)
+     Call inserirDadosExcluidosDoRecordSetNoGridMedia(frm)
+
+     recordBD.Close
+End Function
+
+Public Function CarregarTodasAsMediasExcluidas(frm)
+On Error GoTo erroAoCarregarMidiasExcluidas
+          
+     If connectBD.State = adStateClosed Then connectBD.Open
+
+     If recordBD.State = adStateOpen Then recordBD.Close
+          recordBD.Open UnionFilmesSeriesMusicas, connectBD, adOpenStatic, adLockReadOnly
+
+     Call setarColunasIniciaisDoGridMedia(frm)
+     Call inserirDadosExcluidosDoRecordSetNoGridMedia(frm)
+
+     recordBD.Close
+     Exit Function
+
+erroAoCarregarMidiasExcluidas:
+MsgBox "Erro ao carregar midias: " & Err.Number & " - " & Err.Description, vbCritical, "ERRO!"
+ If recordBD.State = adStateOpen Then recordBD.Close
 End Function

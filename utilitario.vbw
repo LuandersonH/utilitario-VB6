@@ -1,9 +1,9 @@
 frmHome = 26, 26, 1242, 482, , 26, 26, 1246, 508, C
-frmConsultableToDoList = 52, 52, 1336, 534, C, 104, 104, 1346, 544, C
-frmCalculator = 130, 130, 1281, 700, C, 78, 78, 1320, 518, C
-mod_Funcoes_ToDoList = 182, 182, 1178, 645, 
-modConectarBD = 156, 156, 1152, 619, 
-frmMidia = 26, 26, 1268, 466, Z, 130, 130, 1372, 570, C
+mod_Funcoes_ToDoList = 182, 182, 1178, 645, C
+modConectarBD = 156, 156, 1152, 619, C
+frmMidia = 26, 26, 1268, 466, C, 130, 130, 1372, 570, C
 frmMidia_Cadastro = 0, 0, 1242, 440, C, 130, 130, 1372, 570, C
-modMidias = 52, 52, 1307, 642, 
-frmMidia_Excluidos = 0, 0, 0, 0, C, 130, 130, 1281, 700, C
+modMidias = 52, 52, 1307, 642, C
+frmMidia_Excluidos = 78, 78, 1229, 648, Z, 52, 52, 1203, 622, C
+frmCalculator = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+frmConsultableToDoList = 0, 0, 0, 0, C, 0, 0, 0, 0, C
