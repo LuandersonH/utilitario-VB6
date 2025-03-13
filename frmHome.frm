@@ -106,12 +106,16 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Private Sub btnAdministrativo_Click()
+
+End Sub
+
 Private Sub btnEntrarCalculadora_Click()
 frmCalculator.Show
 End Sub
 
 Private Sub btnEntrarFavoritos_Click()
-frmMedia.Show
+frmMidia.Show
 End Sub
 
 

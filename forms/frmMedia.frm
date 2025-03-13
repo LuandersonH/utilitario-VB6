@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "MSFlxGrd.ocx"
-Begin VB.Form frmMedia 
+Begin VB.Form frmMidia 
    AutoRedraw      =   -1  'True
    BackColor       =   &H00FF0000&
    BorderStyle     =   1  'Fixed Single
@@ -23,6 +23,16 @@ Begin VB.Form frmMedia
    ScaleHeight     =   7755
    ScaleWidth      =   14790
    StartUpPosition =   2  'CenterScreen
+   Begin VB.CommandButton cmdExcluidos 
+      Caption         =   "Excluidos"
+      Height          =   975
+      Left            =   13680
+      Picture         =   "frmMedia.frx":0000
+      Style           =   1  'Graphical
+      TabIndex        =   7
+      Top             =   6765
+      Width           =   975
+   End
    Begin VB.CommandButton btnVoltarMedia 
       BackColor       =   &H0000FF00&
       Caption         =   "VOLTAR"
@@ -128,51 +138,39 @@ Begin VB.Form frmMedia
       Width           =   3660
    End
 End
-Attribute VB_Name = "frmMedia"
+Attribute VB_Name = "frmMidia"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Private Sub btnMedia_Click()
-
-End Sub
-
-Private Sub lblVehicles_Click()
-
-End Sub
-
-Private Sub comboTipo_Change()
-
-End Sub
-
 Private Sub btnAddMedia_Click()
-frmMediaAdicionar.Show
+frmMidia_Cadastro.Show
 Unload Me
 End Sub
 
 Private Sub btnDeleteMedia_Click()
 On Error GoTo erroDeleteMedia
    Dim codigoMediaSelecionada As Integer
-   Dim tipoMediaSelecionada As String
+   Dim grupoMediaSelecionada As String
    Dim nomeMediaSelecionada As String
    Dim queryDeletarMedia As String
 
-   If GridMedia.Rows <= 1 Or GridMedia.Row <= 1 Then
+   If GridMedia.Rows <= 0 Or GridMedia.Row <= 0 Then
       MsgBox "Selecione uma midia para excluir!", vbExclamation
       Exit Sub
    End If
 
-
    codigoMediaSelecionada = GridMedia.TextMatrix(GridMedia.Row, 0)
-   tipoMediaSelecionada = GridMedia.TextMatrix(GridMedia.Row, 12)
+   grupoMediaSelecionada = GridMedia.TextMatrix(GridMedia.Row, 12)
    nomeMediaSelecionada = GridMedia.TextMatrix(GridMedia.Row, 1)
 
-   If MsgBox("Realmente deseja excluir " & nomeMediaSelecionada & " De " & tipoMediaSelecionada & "?", vbYesNo, "E X C L U I R ?") = vbNo Then
+   If MsgBox("Realmente deseja excluir " & nomeMediaSelecionada & " De " & grupoMediaSelecionada & "?", vbYesNo, "E X C L U I R ?") = vbNo Then
       Exit Sub
    Else
       If connectBD.State = adStateClosed Then connectBD.Open
-      queryDeletarMedia = "UPDATE " & tipoMediaSelecionada & " Set Excluido = 1 Where Codigo = " & codigoMediaSelecionada
+      queryDeletarMedia = "UPDATE " & grupoMediaSelecionada & " Set Excluido = 1 Where Codigo = " & codigoMediaSelecionada
       connectBD.Execute queryDeletarMedia
+     Call CarregarTodasAsMedias(Me)
    End If
    Exit Sub
 
@@ -188,12 +186,16 @@ Private Sub btnReloadList_Click()
    Exit Sub
 
 erroAoRecarregarGridMedia:
-MsgBox "Erro: " & Err.Number & " - " & Err.Description, vbCritical, "E R R O !"
+     MsgBox "Erro: " & Err.Number & " - " & Err.Description, vbCritical, "E R R O !"
 End Sub
 
 Private Sub btnVoltarMedia_Click()
 frmHome.Show
 Unload Me
+End Sub
+
+Private Sub cmdExcluidos_Click()
+frmMidia_Excluidos.Show
 End Sub
 
 Private Sub Form_Load()

@@ -1,5 +1,5 @@
 VERSION 5.00
-Begin VB.Form frmMediaAdicionar 
+Begin VB.Form frmMidia_Cadastro 
    Caption         =   "Cadastro"
    ClientHeight    =   3705
    ClientLeft      =   60
@@ -283,7 +283,7 @@ Begin VB.Form frmMediaAdicionar
       Width           =   420
    End
 End
-Attribute VB_Name = "frmMediaAdicionar"
+Attribute VB_Name = "frmMidia_Cadastro"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
@@ -319,7 +319,7 @@ Private Sub btnAdicionar_Click()
                
                MsgBox "Cadastro realizado com sucesso", vbExclamation, "SUCESSO"
                Unload Me
-               Load frmMedia
+               Load frmMidia
           Exit Sub
 
 ErroNoCadastroDeFilme:
@@ -354,7 +354,7 @@ ErroNoCadastroDeFilme:
                
                MsgBox "Cadastro realizado com sucesso", vbExclamation, "SUCESSO"
                Unload Me
-               Load frmMedia
+               Load frmMidia
           Exit Sub
 
 ErroNoCadastroDeSerie:
@@ -389,7 +389,7 @@ ErroNoCadastroDeSerie:
                cmdMusica.Execute
                
                MsgBox "Cadastro realizado com sucesso", vbExclamation, "SUCESSO"
-               frmMedia.Show
+               frmMidia.Show
                Unload Me
           Exit Sub
 
@@ -405,12 +405,12 @@ End Sub
 
 
 Private Sub btnVoltar_Click()
-frmMedia.Show
+frmMidia.Show
 Unload Me
 End Sub
 
 Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
-frmMedia.Show
+frmMidia.Show
 Unload Me
 
 End Sub

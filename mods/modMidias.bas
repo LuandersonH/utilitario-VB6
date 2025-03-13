@@ -1,4 +1,4 @@
-Attribute VB_Name = "modClientes"
+Attribute VB_Name = "modMidias"
 Public Function UnionFilmesSeriesMusicas()
  'campos  totais no BD, apos Union All: CODIGO - NOME - DIRETOR - ATORES - TEMPORADAS - GENERO - NOTA - OBSERVA��O - ARTISTA - PARTICIPANTES - ALBUM - DURACAO - TIPO
 UnionFilmesSeriesMusicas = "SELECT Codigo, Nome, Diretor, Atores, 0 AS Temporadas, Genero, Nota, Observacao, Null AS Artista, Null AS Participantes, Null AS Album, Duracao, Grupo, Excluido FROM Filmes " & _
