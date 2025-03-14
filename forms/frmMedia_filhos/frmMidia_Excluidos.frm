@@ -24,47 +24,68 @@ Begin VB.Form frmMidia_Excluidos
    ScaleWidth      =   14790
    StartUpPosition =   2  'CenterScreen
    Begin VB.CommandButton btnVoltar 
-      BackColor       =   &H0000FF00&
-      Caption         =   "VOLTAR"
-      Height          =   885
-      Left            =   10185
-      Style           =   1  'Graphical
-      TabIndex        =   6
-      Top             =   6750
-      Width           =   3285
-   End
-   Begin VB.CommandButton btnEstornarMedia 
-      BackColor       =   &H0000FF00&
-      Caption         =   "EXCLUIR MIDIA"
-      Height          =   930
-      Left            =   6870
+      BackColor       =   &H00FFFFFF&
+      Caption         =   "SAIR"
+      BeginProperty Font 
+         Name            =   "Calibri"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   1050
+      Left            =   9780
+      Picture         =   "frmMidia_Excluidos.frx":0000
       Style           =   1  'Graphical
       TabIndex        =   5
-      Top             =   6750
-      Width           =   3225
+      Top             =   6690
+      Width           =   1830
    End
-   Begin VB.CommandButton btnAddMedia 
-      BackColor       =   &H0000FF00&
-      Caption         =   "ADICIONAR MIDIA"
-      Height          =   960
-      Left            =   45
+   Begin VB.CommandButton btnEstornarMedia 
+      BackColor       =   &H00FFFFFF&
+      Caption         =   "EXCLUIR"
+      BeginProperty Font 
+         Name            =   "Calibri"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   1005
+      Left            =   6660
+      Picture         =   "frmMidia_Excluidos.frx":25CA
       Style           =   1  'Graphical
       TabIndex        =   4
       Top             =   6720
-      Width           =   3285
+      Width           =   1860
    End
    Begin VB.CommandButton btnReloadList 
-      BackColor       =   &H0000FF00&
+      BackColor       =   &H00FFFFFF&
       Caption         =   "RECARREGAR LISTA"
-      Height          =   960
-      Left            =   3450
+      BeginProperty Font 
+         Name            =   "Calibri"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   1020
+      Left            =   3735
+      MaskColor       =   &H00FFFFFF&
+      Picture         =   "frmMidia_Excluidos.frx":4B94
       Style           =   1  'Graphical
       TabIndex        =   3
       Top             =   6735
-      Width           =   3285
+      Width           =   1875
    End
    Begin VB.TextBox inputMediaFilter 
-      BackColor       =   &H00C0FFFF&
+      BackColor       =   &H00C0C0FF&
       BeginProperty Font 
          Name            =   "Bell MT"
          Size            =   12
@@ -100,7 +121,7 @@ Begin VB.Form frmMidia_Excluidos
       BackColorFixed  =   14737632
       ForeColorFixed  =   0
       BackColorSel    =   12632256
-      BackColorBkg    =   12648447
+      BackColorBkg    =   12632319
       GridColor       =   0
       WordWrap        =   -1  'True
       AllowBigSelection=   -1  'True
@@ -121,11 +142,12 @@ Begin VB.Form frmMidia_Excluidos
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   &H8000000E&
       Height          =   345
-      Left            =   5430
+      Left            =   4635
       TabIndex        =   2
       Top             =   60
-      Width           =   3660
+      Width           =   5415
    End
 End
 Attribute VB_Name = "frmMidia_Excluidos"

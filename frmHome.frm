@@ -30,17 +30,27 @@ Begin VB.Form frmHome
       Begin VB.CommandButton btnEntrarFavoritos 
          BackColor       =   &H00C0FFFF&
          Caption         =   "ENTRAR"
-         Height          =   800
-         Left            =   150
+         BeginProperty Font 
+            Name            =   "Calibri"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   915
+         Left            =   195
+         Picture         =   "frmHome.frx":0000
          Style           =   1  'Graphical
          TabIndex        =   5
-         Top             =   2620
+         Top             =   2535
          Width           =   2500
       End
       Begin VB.Image imgFavs 
          Height          =   1995
          Left            =   555
-         Picture         =   "frmHome.frx":0000
+         Picture         =   "frmHome.frx":10CA
          Stretch         =   -1  'True
          Top             =   465
          Width           =   1800
@@ -57,17 +67,27 @@ Begin VB.Form frmHome
       Begin VB.CommandButton btnEntrarTodolist 
          BackColor       =   &H00C0FFFF&
          Caption         =   "ENTRAR"
-         Height          =   800
+         BeginProperty Font 
+            Name            =   "Calibri"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   885
          Left            =   165
+         Picture         =   "frmHome.frx":102E0
          Style           =   1  'Graphical
          TabIndex        =   4
-         Top             =   2620
+         Top             =   2535
          Width           =   2500
       End
       Begin VB.Image imgToDoList 
          Height          =   1995
          Left            =   510
-         Picture         =   "frmHome.frx":F216
+         Picture         =   "frmHome.frx":113AA
          Stretch         =   -1  'True
          Top             =   480
          Width           =   1800
@@ -84,17 +104,27 @@ Begin VB.Form frmHome
       Begin VB.CommandButton btnEntrarCalculadora 
          BackColor       =   &H00C0FFFF&
          Caption         =   "ENTRAR"
-         Height          =   800
+         BeginProperty Font 
+            Name            =   "Calibri"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   840
          Left            =   165
+         Picture         =   "frmHome.frx":12A57
          Style           =   1  'Graphical
          TabIndex        =   3
-         Top             =   2620
-         Width           =   2500
+         Top             =   2565
+         Width           =   2505
       End
       Begin VB.Image imgCalculator 
          Height          =   1995
          Left            =   510
-         Picture         =   "frmHome.frx":108C3
+         Picture         =   "frmHome.frx":13B21
          Stretch         =   -1  'True
          Top             =   420
          Width           =   1800
@@ -196,4 +226,16 @@ Private Sub Form_Resize()
     frameFavoritos.Left = (frameToDoList.Left + frameCalculadora.Width + 2000)
     frameFavoritos.Top = (Me.ScaleHeight - frameFavoritos.Height) \ 2
      
+End Sub
+
+Private Sub imgCalculator_Click()
+frmCalculator.Show
+End Sub
+
+Private Sub imgFavs_Click()
+frmMidia.Show
+End Sub
+
+Private Sub imgToDoList_Click()
+frmConsultableToDoList.Show
 End Sub

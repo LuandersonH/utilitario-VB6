@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin VB.Form frmMidia_Cadastro 
    Caption         =   "Cadastro"
-   ClientHeight    =   3705
+   ClientHeight    =   3855
    ClientLeft      =   60
    ClientTop       =   405
-   ClientWidth     =   9750
+   ClientWidth     =   9840
    BeginProperty Font 
       Name            =   "Tahoma"
       Size            =   8.25
@@ -15,8 +15,8 @@ Begin VB.Form frmMidia_Cadastro
       Strikethrough   =   0   'False
    EndProperty
    LinkTopic       =   "Form1"
-   ScaleHeight     =   3705
-   ScaleWidth      =   9750
+   ScaleHeight     =   3855
+   ScaleWidth      =   9840
    ShowInTaskbar   =   0   'False
    StartUpPosition =   3  'Windows Default
    Begin VB.TextBox txtDuracaoTemporadasAlbum 
@@ -33,7 +33,7 @@ Begin VB.Form frmMidia_Cadastro
       Height          =   285
       Left            =   45
       MaxLength       =   5
-      TabIndex        =   17
+      TabIndex        =   5
       Tag             =   "tagDuracao"
       Top             =   1800
       Width           =   1185
@@ -54,7 +54,7 @@ Begin VB.Form frmMidia_Cadastro
       Left            =   7260
       List            =   "frmMediaAdicionar.frx":0002
       Style           =   2  'Dropdown List
-      TabIndex        =   16
+      TabIndex        =   7
       Tag             =   "tagNota"
       Top             =   1800
       Width           =   1830
@@ -63,26 +63,26 @@ Begin VB.Form frmMidia_Cadastro
       BackColor       =   &H00C0FFFF&
       Caption         =   "VOLTAR"
       Height          =   675
-      Left            =   4290
+      Left            =   4920
       Style           =   1  'Graphical
-      TabIndex        =   15
-      Top             =   2955
+      TabIndex        =   10
+      Top             =   3015
       Width           =   2190
    End
    Begin VB.CommandButton btnAdicionar 
       BackColor       =   &H00C0FFFF&
       Caption         =   "ADICIONAR"
       Height          =   675
-      Left            =   1965
+      Left            =   2595
       Style           =   1  'Graphical
-      TabIndex        =   14
-      Top             =   2940
+      TabIndex        =   9
+      Top             =   3000
       Width           =   2190
    End
    Begin VB.TextBox txtObservacao 
       Height          =   315
       Left            =   60
-      TabIndex        =   13
+      TabIndex        =   8
       Tag             =   "tagObservacao"
       Top             =   2535
       Width           =   9645
@@ -90,7 +90,7 @@ Begin VB.Form frmMidia_Cadastro
    Begin VB.TextBox txtGenero 
       Height          =   315
       Left            =   1500
-      TabIndex        =   10
+      TabIndex        =   6
       Tag             =   "tagGenero"
       Top             =   1800
       Width           =   5565
@@ -98,7 +98,7 @@ Begin VB.Form frmMidia_Cadastro
    Begin VB.TextBox txtAtoresParticipantes 
       Height          =   315
       Left            =   4000
-      TabIndex        =   7
+      TabIndex        =   4
       Tag             =   "tagAtores"
       Top             =   1095
       Width           =   5550
@@ -106,7 +106,7 @@ Begin VB.Form frmMidia_Cadastro
    Begin VB.TextBox txtDiretorArtista 
       Height          =   315
       Left            =   90
-      TabIndex        =   5
+      TabIndex        =   3
       Tag             =   "tagDiretor"
       Top             =   1110
       Width           =   3705
@@ -114,7 +114,8 @@ Begin VB.Form frmMidia_Cadastro
    Begin VB.TextBox txtNome 
       Height          =   315
       Left            =   2445
-      TabIndex        =   3
+      MaxLength       =   80
+      TabIndex        =   2
       Tag             =   "tagNome"
       Top             =   405
       Width           =   7125
@@ -133,7 +134,7 @@ Begin VB.Form frmMidia_Cadastro
    Begin VB.Label lblObservacao 
       AutoSize        =   -1  'True
       BackStyle       =   0  'Transparent
-      Caption         =   "Observação"
+      Caption         =   "Observacao"
       BeginProperty Font 
          Name            =   "Verdana"
          Size            =   9.75
@@ -145,9 +146,9 @@ Begin VB.Form frmMidia_Cadastro
       EndProperty
       Height          =   240
       Left            =   4110
-      TabIndex        =   12
+      TabIndex        =   17
       Top             =   2280
-      Width           =   1200
+      Width           =   1170
    End
    Begin VB.Label lblNota 
       AutoSize        =   -1  'True
@@ -164,14 +165,14 @@ Begin VB.Form frmMidia_Cadastro
       EndProperty
       Height          =   240
       Left            =   7335
-      TabIndex        =   11
+      TabIndex        =   16
       Top             =   1600
       Width           =   810
    End
    Begin VB.Label lblGenero 
       AutoSize        =   -1  'True
       BackStyle       =   0  'Transparent
-      Caption         =   "Gênero"
+      Caption         =   "Genero"
       BeginProperty Font 
          Name            =   "Verdana"
          Size            =   9.75
@@ -183,14 +184,14 @@ Begin VB.Form frmMidia_Cadastro
       EndProperty
       Height          =   240
       Left            =   1545
-      TabIndex        =   9
+      TabIndex        =   15
       Top             =   1605
-      Width           =   810
+      Width           =   690
    End
    Begin VB.Label lblDuracao 
       AutoSize        =   -1  'True
       BackStyle       =   0  'Transparent
-      Caption         =   "Duração"
+      Caption         =   "Duracao"
       BeginProperty Font 
          Name            =   "Verdana"
          Size            =   9.75
@@ -202,7 +203,7 @@ Begin VB.Form frmMidia_Cadastro
       EndProperty
       Height          =   240
       Left            =   100
-      TabIndex        =   8
+      TabIndex        =   14
       Top             =   1600
       Width           =   810
    End
@@ -221,7 +222,7 @@ Begin VB.Form frmMidia_Cadastro
       EndProperty
       Height          =   240
       Left            =   4035
-      TabIndex        =   6
+      TabIndex        =   13
       Top             =   870
       Width           =   1065
    End
@@ -240,7 +241,7 @@ Begin VB.Form frmMidia_Cadastro
       EndProperty
       Height          =   240
       Left            =   105
-      TabIndex        =   4
+      TabIndex        =   12
       Top             =   885
       Width           =   1065
    End
@@ -259,7 +260,7 @@ Begin VB.Form frmMidia_Cadastro
       EndProperty
       Height          =   240
       Left            =   2490
-      TabIndex        =   2
+      TabIndex        =   11
       Top             =   150
       Width           =   540
    End
@@ -289,6 +290,13 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Private Sub btnAdicionar_Click()
+
+ If Trim(txtNome.Text) = "" Then
+   MsgBox "O campo de nome nao pode estar vazio.", vbCritical, "PREENCHA OS CAMPOS"
+   Exit Sub
+End If
+
+
      Select Case cboTipo.List(cboTipo.ListIndex)
           Case "FILME"
           On Error GoTo ErroNoCadastroDeFilme
@@ -304,7 +312,7 @@ Private Sub btnAdicionar_Click()
                cmdFilme.ActiveConnection = connectBD
      
                'A query que tera os valores substituidos:
-               cmdFilme.CommandText = "INSERT INTO Filmes (Nome, Diretor, Atores, Duracao, Genero, Nota, Observacao) VALUES (?, ?, ?, ?, ?, ?, ?)"
+               cmdFilme.CommandText = "INSERT INTO Filmes (Nome, Diretor, Atores, Duracao, Genero, Nota, Observacao, Grupo, Excluido) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
                
                'Substituicao dos parametros pelos dados dos inputs:
                cmdFilme.Parameters.Append cmdFilme.CreateParameter(, adVarChar, adParamInput, 255, txtNome.Text)
@@ -314,7 +322,10 @@ Private Sub btnAdicionar_Click()
                cmdFilme.Parameters.Append cmdFilme.CreateParameter(, adVarChar, adParamInput, 255, txtGenero.Text)
                cmdFilme.Parameters.Append cmdFilme.CreateParameter(, adInteger, adParamInput, , CInt(cboNota.Text))
                cmdFilme.Parameters.Append cmdFilme.CreateParameter(, adVarChar, adParamInput, 255, txtObservacao.Text)
-               
+               cmdFilme.Parameters.Append cmdFilme.CreateParameter(, adVarChar, adParmInput, 6, "Filmes")
+               cmdFime.Parameters.Append cmdFilme.CreateParameter(, adInteger, adPamInput, , CInt(0))
+
+
                cmdFilme.Execute
                
                MsgBox "Cadastro realizado com sucesso", vbExclamation, "SUCESSO"
@@ -339,7 +350,7 @@ ErroNoCadastroDeFilme:
                cmdSerie.ActiveConnection = connectBD
      
                'A query que tera os valores substituidos:
-               cmdSerie.CommandText = "INSERT INTO Series (Nome, Diretor, Atores, Temporadas, Genero, Nota, Observacao) VALUES (?, ?, ?, ?, ?, ?, ?)"
+               cmdSerie.CommandText = "INSERT INTO Series (Nome, Diretor, Atores, Temporadas, Genero, Nota, Observacao, Grupo, Excluido) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
                
                'Substituicao dos parametros pelos dados dos inputs:
                cmdSerie.Parameters.Append cmdSerie.CreateParameter(, adVarChar, adParamInput, 255, txtNome.Text)
@@ -349,7 +360,8 @@ ErroNoCadastroDeFilme:
                cmdSerie.Parameters.Append cmdSerie.CreateParameter(, adVarChar, adParamInput, 255, txtGenero.Text)
                cmdSerie.Parameters.Append cmdSerie.CreateParameter(, adInteger, adParamInput, , CInt(cboNota.Text))
                cmdSerie.Parameters.Append cmdSerie.CreateParameter(, adVarChar, adParamInput, 255, txtObservacao.Text)
-               
+               cmdSerie.Parameters.Append cmdSerie.CreateParameter(, adVarChar, adParmInput, 6, "Series")
+               cmdSerie.Parameters.Append cmdSerie.CreateParameter(, adInteger, adPamInput, , CInt(0))
                cmdSerie.Execute
                
                MsgBox "Cadastro realizado com sucesso", vbExclamation, "SUCESSO"
@@ -375,7 +387,7 @@ ErroNoCadastroDeSerie:
                cmdMusica.ActiveConnection = connectBD
      
                'A query que tera os valores substituidos:
-               cmdMusica.CommandText = "INSERT INTO Musicas (Nome, Artista, Participantes, Album, Genero, Nota, Observacao) VALUES (?, ?, ?, ?, ?, ?, ?)"
+               cmdMusica.CommandText = "INSERT INTO Musicas (Nome, Artista, Participantes, Album, Genero, Nota, Observacao, Grupo, Excluido) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
                
                'Substituicao dos parametros pelos dados dos inputs:
                cmdMusica.Parameters.Append cmdMusica.CreateParameter(, adVarChar, adParamInput, 255, txtNome.Text)
@@ -385,7 +397,8 @@ ErroNoCadastroDeSerie:
                cmdMusica.Parameters.Append cmdMusica.CreateParameter(, adVarChar, adParamInput, 255, txtGenero.Text)
                cmdMusica.Parameters.Append cmdMusica.CreateParameter(, adInteger, adParamInput, , CInt(cboNota.Text))
                cmdMusica.Parameters.Append cmdMusica.CreateParameter(, adVarChar, adParamInput, 255, txtObservacao.Text)
-               
+               cmdMusica.Parameters.Append cmdMusica.CreateParameter(, adVarChar, adParamInput, 7, "Musicas")
+               cmdMusica.Parameters.Append cmdMusica.CreateParameter(, adInteger, adParamInput, , 0)
                cmdMusica.Execute
                
                MsgBox "Cadastro realizado com sucesso", vbExclamation, "SUCESSO"
@@ -397,7 +410,7 @@ ErroNoCadastroDeMusica:
           MsgBox "Erro no cadastro: " & Err.Number & " - " & Err.Description, vbCritical, "Erro"
           
      Case Else
-          MsgBox "SELECIONE UM TIPO DE MÍDIA PARA SER CADASTRADA", vbExclamation, "SELECIONE UM TIPO"
+          MsgBox "SELECIONE UM TIPO DE Mï¿½DIA PARA SER CADASTRADA", vbExclamation, "SELECIONE UM TIPO"
      
      End Select
 
@@ -433,30 +446,28 @@ End Sub
 Private Sub txtDuracaoTemporadasAlbum_KeyPress(KeyAscii As Integer)
 
 If txtDuracaoTemporadasAlbum.Tag = "tagDuracao" Or txtDuracaoTemporadasAlbum.Tag = "tagTemporadas" Then
-     ' Permitir números de 0 a 9 (ASCII 49 a 57), dois pontos ":" (ASCII 58) e Backspace (ASCII 8)
+     ' Permitir numeros de 0 a 9 (ASCII 49 a 57), dois pontos ":" (ASCII 58) e Backspace (ASCII 8)
      If (KeyAscii >= 48 And KeyAscii <= 57) Or KeyAscii = 58 Or KeyAscii = 8 Then
           Exit Sub  ' Permite a tecla pressionada
      End If
 
-     ' Permitir apenas números de 1 a 9 (ASCII 49 a 57)
-
      If txtDuracaoTemporadasAlbum.Tag = "tagDuracao" Then
-    If KeyAscii = 58 Then ' Código ASCII do ":"
+    If KeyAscii = 58 Then ' codigo ASCII do ":"
      Exit Sub
           End If
      End If
 
      If (KeyAscii >= 49 And KeyAscii <= 57) Then
-     ' Permitir números de 1 a 9
+     ' permitir numeros de 1 a 9
           Exit Sub
      End If
 
-     ' Permitir a tecla Backspace (Código ASCII 8)
+     ' permitir a tecla Backspace
      If KeyAscii = 8 Then
           Exit Sub
      End If
 
-     KeyAscii = 0 ' Impede que a tecla seja processada
+     KeyAscii = 0 ' impedir que a tecla seja processada
 End If
           
     

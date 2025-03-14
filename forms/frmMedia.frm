@@ -131,6 +131,7 @@ Begin VB.Form frmMidia
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   &H8000000E&
       Height          =   345
       Left            =   5430
       TabIndex        =   2
