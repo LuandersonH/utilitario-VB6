@@ -16,6 +16,7 @@ Module=modMidias; mods\modMidias.bas
 Form=forms\frmMedia_filhos\frmMidia_Excluidos.frm
 Form=forms\frmCalculadora\frmCalculator.frm
 Form=forms\frmToDoList\ConsultableToDoList.frm
+Object={0C8DE9F2-EAFC-44DF-A13F-B5A9B36ED780}#2.0#0; lvButton.ocx
 IconForm="frmHome"
 Startup="frmHome"
 Command32=""

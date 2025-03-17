@@ -1,5 +1,6 @@
 VERSION 5.00
 Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "MSFlxGrd.ocx"
+Object = "{0C8DE9F2-EAFC-44DF-A13F-B5A9B36ED780}#2.0#0"; "lvButton.ocx"
 Begin VB.Form frmMidia 
    AutoRedraw      =   -1  'True
    BackColor       =   &H00FF0000&
@@ -23,55 +24,142 @@ Begin VB.Form frmMidia
    ScaleHeight     =   7755
    ScaleWidth      =   14790
    StartUpPosition =   2  'CenterScreen
-   Begin VB.CommandButton cmdExcluidos 
-      Caption         =   "Excluidos"
-      Height          =   975
-      Left            =   13680
-      Picture         =   "frmMedia.frx":0000
-      Style           =   1  'Graphical
+   Begin lvButton.lvButtons_H lvEstorno 
+      Height          =   1000
+      Left            =   12500
       TabIndex        =   7
-      Top             =   6765
-      Width           =   975
+      Top             =   6725
+      Width           =   2000
+      _ExtentX        =   3519
+      _ExtentY        =   1773
+      Caption         =   "ESTORNAR"
+      CapAlign        =   2
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      cGradient       =   0
+      Mode            =   0
+      Value           =   0   'False
+      ImgAlign        =   4
+      Image           =   "frmMedia.frx":0000
+      ImgSize         =   32
+      cBack           =   -2147483633
    End
-   Begin VB.CommandButton btnVoltarMedia 
-      BackColor       =   &H0000FF00&
-      Caption         =   "VOLTAR"
-      Height          =   885
-      Left            =   10185
-      Style           =   1  'Graphical
+   Begin lvButton.lvButtons_H lvVoltar 
+      Height          =   1005
+      Left            =   9480
       TabIndex        =   6
       Top             =   6750
-      Width           =   3285
+      Width           =   1995
+      _ExtentX        =   3519
+      _ExtentY        =   1773
+      Caption         =   "VOLTAR"
+      CapAlign        =   2
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Calibri"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      cGradient       =   0
+      Mode            =   0
+      Value           =   0   'False
+      ImgAlign        =   4
+      Image           =   "frmMedia.frx":25DA
+      ImgSize         =   32
+      cBack           =   -2147483633
    End
-   Begin VB.CommandButton btnDeleteMedia 
-      BackColor       =   &H0000FF00&
-      Caption         =   "EXCLUIR MIDIA"
-      Height          =   930
-      Left            =   6870
-      Style           =   1  'Graphical
+   Begin lvButton.lvButtons_H lvExcluir 
+      Height          =   1005
+      Left            =   6500
       TabIndex        =   5
-      Top             =   6750
-      Width           =   3225
+      Top             =   6726
+      Width           =   1995
+      _ExtentX        =   3519
+      _ExtentY        =   1773
+      Caption         =   "EXCLUIR"
+      CapAlign        =   2
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Calibri"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      cGradient       =   0
+      Mode            =   0
+      Value           =   0   'False
+      ImgAlign        =   4
+      Image           =   "frmMedia.frx":4BB4
+      ImgSize         =   32
+      cBack           =   12632256
    End
-   Begin VB.CommandButton btnAddMedia 
-      BackColor       =   &H0000FF00&
-      Caption         =   "ADICIONAR MIDIA"
-      Height          =   960
-      Left            =   45
-      Style           =   1  'Graphical
+   Begin lvButton.lvButtons_H lvRecarregar 
+      Height          =   1005
+      Left            =   3500
       TabIndex        =   4
-      Top             =   6720
-      Width           =   3285
+      Top             =   6725
+      Width           =   1995
+      _ExtentX        =   3519
+      _ExtentY        =   1773
+      Caption         =   "RECARREGAR"
+      CapAlign        =   2
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Calibri"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      cGradient       =   0
+      Mode            =   0
+      Value           =   0   'False
+      ImgAlign        =   4
+      Image           =   "frmMedia.frx":718E
+      ImgSize         =   32
+      cBack           =   12632256
    End
-   Begin VB.CommandButton btnReloadList 
-      BackColor       =   &H0000FF00&
-      Caption         =   "RECARREGAR LISTA"
-      Height          =   960
-      Left            =   3450
-      Style           =   1  'Graphical
+   Begin lvButton.lvButtons_H lvAdicionar 
+      Height          =   1005
+      Left            =   500
       TabIndex        =   3
-      Top             =   6735
-      Width           =   3285
+      Top             =   6725
+      Width           =   1995
+      _ExtentX        =   3519
+      _ExtentY        =   1773
+      Caption         =   "ADICIONAR"
+      CapAlign        =   2
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Calibri"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      cFore           =   -2147483625
+      cFHover         =   -2147483625
+      cGradient       =   0
+      Mode            =   0
+      Value           =   0   'False
+      ImgAlign        =   4
+      Image           =   "frmMedia.frx":9768
+      ImgSize         =   32
+      cBack           =   12632256
    End
    Begin VB.TextBox inputMediaFilter 
       BackColor       =   &H00C0FFFF&
@@ -94,7 +182,7 @@ Begin VB.Form frmMidia
    End
    Begin MSFlexGridLib.MSFlexGrid GridMedia 
       Height          =   5415
-      Left            =   45
+      Left            =   30
       TabIndex        =   1
       Top             =   1290
       Width           =   14745
@@ -144,12 +232,26 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Private Sub btnAddMedia_Click()
+Private Sub Form_Load()
+     Call centralizarForm(Me)
+     Call setarColunasIniciaisDoGridMedia(Me)
+End Sub
+
+
+Private Sub inputMediaFilter_Change()
+Call pesquisarNoInputMediaFilterComLike(Me)
+End Sub
+
+Private Sub lvAdicionar_Click()
 frmMidia_Cadastro.Show
 Unload Me
 End Sub
 
-Private Sub btnDeleteMedia_Click()
+Private Sub lvEstorno_Click()
+frmMidia_Excluidos.Show
+End Sub
+
+Private Sub lvExcluir_Click()
 On Error GoTo erroDeleteMedia
    Dim codigoMediaSelecionada As Integer
    Dim grupoMediaSelecionada As String
@@ -179,7 +281,7 @@ erroDeleteMedia:
    MsgBox "Erro: " & Err.Number & " - " & Err.Description, vbCritical, "E R R O !"
 End Sub
 
-Private Sub btnReloadList_Click()
+Private Sub lvRecarregar_Click()
    On Error GoTo erroAoRecarregarGridMedia
 
    Call UnionFilmesSeriesMusicas
@@ -190,22 +292,7 @@ erroAoRecarregarGridMedia:
      MsgBox "Erro: " & Err.Number & " - " & Err.Description, vbCritical, "E R R O !"
 End Sub
 
-Private Sub btnVoltarMedia_Click()
+Private Sub lvVoltar_Click()
 frmHome.Show
 Unload Me
 End Sub
-
-Private Sub cmdExcluidos_Click()
-frmMidia_Excluidos.Show
-End Sub
-
-Private Sub Form_Load()
-     Call centralizarForm(Me)
-     Call setarColunasIniciaisDoGridMedia(Me)
-End Sub
-
-
-Private Sub inputMediaFilter_Change()
-Call pesquisarNoInputMediaFilterComLike(Me)
-End Sub
-
