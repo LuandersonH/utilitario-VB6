@@ -49,7 +49,7 @@ Begin VB.Form frmMidia_Excluidos
       ImgAlign        =   4
       Image           =   "frmMidia_Excluidos.frx":0000
       ImgSize         =   32
-      cBack           =   -2147483633
+      cBack           =   14737632
    End
    Begin lvButton.lvButtons_H lvExcluidosRecuperar 
       Height          =   1065
@@ -76,7 +76,7 @@ Begin VB.Form frmMidia_Excluidos
       ImgAlign        =   4
       Image           =   "frmMidia_Excluidos.frx":25DA
       ImgSize         =   32
-      cBack           =   12632256
+      cBack           =   14737632
    End
    Begin lvButton.lvButtons_H lvExcluidosRecarregar 
       Height          =   1065
@@ -103,7 +103,7 @@ Begin VB.Form frmMidia_Excluidos
       ImgAlign        =   4
       Image           =   "frmMidia_Excluidos.frx":4BB4
       ImgSize         =   32
-      cBack           =   12632256
+      cBack           =   14737632
    End
    Begin VB.TextBox inputMediaFilter 
       BackColor       =   &H00C0C0FF&

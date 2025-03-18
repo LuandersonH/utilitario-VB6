@@ -54,7 +54,7 @@ Begin VB.Form frmHome
          ImgAlign        =   4
          Image           =   "frmHome.frx":0000
          ImgSize         =   32
-         cBack           =   12632256
+         cBack           =   14737632
       End
       Begin VB.Image imgFavs 
          Height          =   1995
@@ -99,7 +99,7 @@ Begin VB.Form frmHome
          ImgAlign        =   4
          Image           =   "frmHome.frx":117F0
          ImgSize         =   32
-         cBack           =   12632256
+         cBack           =   14737632
       End
       Begin VB.Image imgToDoList 
          Height          =   1995
@@ -144,7 +144,7 @@ Begin VB.Form frmHome
          ImgAlign        =   4
          Image           =   "frmHome.frx":15477
          ImgSize         =   32
-         cBack           =   12632256
+         cBack           =   14737632
       End
       Begin VB.Image imgCalculator 
          Height          =   1995

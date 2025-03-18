@@ -1,10 +1,11 @@
 VERSION 5.00
 Object = "{0C8DE9F2-EAFC-44DF-A13F-B5A9B36ED780}#2.0#0"; "lvButton.ocx"
 Begin VB.Form frmMidia_Cadastro 
+   BorderStyle     =   1  'Fixed Single
    Caption         =   "Cadastro"
    ClientHeight    =   4080
-   ClientLeft      =   60
-   ClientTop       =   405
+   ClientLeft      =   45
+   ClientTop       =   390
    ClientWidth     =   9810
    BeginProperty Font 
       Name            =   "Tahoma"
@@ -16,9 +17,9 @@ Begin VB.Form frmMidia_Cadastro
       Strikethrough   =   0   'False
    EndProperty
    LinkTopic       =   "Form1"
+   MaxButton       =   0   'False
    ScaleHeight     =   4080
    ScaleWidth      =   9810
-   ShowInTaskbar   =   0   'False
    StartUpPosition =   3  'Windows Default
    Begin lvButton.lvButtons_H lvCadastroVoltar 
       Height          =   1005
@@ -45,7 +46,7 @@ Begin VB.Form frmMidia_Cadastro
       ImgAlign        =   4
       Image           =   "frmMediaAdicionar.frx":0000
       ImgSize         =   32
-      cBack           =   -2147483633
+      cBack           =   14737632
    End
    Begin lvButton.lvButtons_H lvCadastroAdicionar 
       Height          =   1005
@@ -74,7 +75,7 @@ Begin VB.Form frmMidia_Cadastro
       ImgAlign        =   4
       Image           =   "frmMediaAdicionar.frx":25DA
       ImgSize         =   32
-      cBack           =   12632256
+      cBack           =   14737632
    End
    Begin VB.TextBox txtDuracaoTemporadasAlbum 
       Alignment       =   2  'Center

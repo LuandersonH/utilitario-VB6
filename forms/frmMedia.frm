@@ -49,13 +49,13 @@ Begin VB.Form frmMidia
       ImgAlign        =   4
       Image           =   "frmMedia.frx":0000
       ImgSize         =   32
-      cBack           =   -2147483633
+      cBack           =   14737632
    End
    Begin lvButton.lvButtons_H lvVoltar 
       Height          =   1005
       Left            =   9480
       TabIndex        =   6
-      Top             =   6750
+      Top             =   6725
       Width           =   1995
       _ExtentX        =   3519
       _ExtentY        =   1773
@@ -76,7 +76,7 @@ Begin VB.Form frmMidia
       ImgAlign        =   4
       Image           =   "frmMedia.frx":25DA
       ImgSize         =   32
-      cBack           =   -2147483633
+      cBack           =   14737632
    End
    Begin lvButton.lvButtons_H lvExcluir 
       Height          =   1005
@@ -103,7 +103,7 @@ Begin VB.Form frmMidia
       ImgAlign        =   4
       Image           =   "frmMedia.frx":4BB4
       ImgSize         =   32
-      cBack           =   12632256
+      cBack           =   14737632
    End
    Begin lvButton.lvButtons_H lvRecarregar 
       Height          =   1005
@@ -130,7 +130,7 @@ Begin VB.Form frmMidia
       ImgAlign        =   4
       Image           =   "frmMedia.frx":718E
       ImgSize         =   32
-      cBack           =   12632256
+      cBack           =   14737632
    End
    Begin lvButton.lvButtons_H lvCadastrar 
       Height          =   1005
@@ -159,7 +159,7 @@ Begin VB.Form frmMidia
       ImgAlign        =   4
       Image           =   "frmMedia.frx":9768
       ImgSize         =   32
-      cBack           =   12632256
+      cBack           =   14737632
    End
    Begin VB.TextBox inputMediaFilter 
       BackColor       =   &H00C0FFFF&
