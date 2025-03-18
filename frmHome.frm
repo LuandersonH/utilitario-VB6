@@ -1,4 +1,5 @@
 VERSION 5.00
+Object = "{0C8DE9F2-EAFC-44DF-A13F-B5A9B36ED780}#2.0#0"; "lvButton.ocx"
 Begin VB.Form frmHome 
    BackColor       =   &H00E0E0E0&
    Caption         =   "UTILIT�RIO"
@@ -19,7 +20,7 @@ Begin VB.Form frmHome
    ScaleHeight     =   7980
    ScaleWidth      =   13995
    StartUpPosition =   3  'Windows Default
-   Begin VB.Frame frameFavoritos 
+   Begin VB.Frame frameMidias 
       BackColor       =   &H00FFFFFF&
       Caption         =   "MIDIAS FAVORITAS"
       Height          =   3540
@@ -27,30 +28,38 @@ Begin VB.Form frmHome
       TabIndex        =   2
       Top             =   3000
       Width           =   2800
-      Begin VB.CommandButton btnEntrarFavoritos 
-         BackColor       =   &H00C0FFFF&
+      Begin lvButton.lvButtons_H lvEntrar 
+         Height          =   960
+         Index           =   2
+         Left            =   75
+         TabIndex        =   5
+         Top             =   2520
+         Width           =   2640
+         _ExtentX        =   4657
+         _ExtentY        =   1693
          Caption         =   "ENTRAR"
-         BeginProperty Font 
+         CapAlign        =   2
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Calibri"
-            Size            =   8.25
+            Size            =   9.75
             Charset         =   0
             Weight          =   700
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   915
-         Left            =   195
-         Picture         =   "frmHome.frx":0000
-         Style           =   1  'Graphical
-         TabIndex        =   5
-         Top             =   2535
-         Width           =   2500
+         cGradient       =   0
+         Mode            =   0
+         Value           =   0   'False
+         ImgAlign        =   4
+         Image           =   "frmHome.frx":0000
+         ImgSize         =   32
+         cBack           =   12632256
       End
       Begin VB.Image imgFavs 
          Height          =   1995
          Left            =   555
-         Picture         =   "frmHome.frx":10CA
+         Picture         =   "frmHome.frx":25DA
          Stretch         =   -1  'True
          Top             =   465
          Width           =   1800
@@ -64,30 +73,38 @@ Begin VB.Form frmHome
       TabIndex        =   1
       Top             =   3000
       Width           =   2800
-      Begin VB.CommandButton btnEntrarTodolist 
-         BackColor       =   &H00C0FFFF&
+      Begin lvButton.lvButtons_H lvEntrar 
+         Height          =   960
+         Index           =   1
+         Left            =   75
+         TabIndex        =   4
+         Top             =   2520
+         Width           =   2640
+         _ExtentX        =   4657
+         _ExtentY        =   1693
          Caption         =   "ENTRAR"
-         BeginProperty Font 
+         CapAlign        =   2
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Calibri"
-            Size            =   8.25
+            Size            =   9.75
             Charset         =   0
             Weight          =   700
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   885
-         Left            =   165
-         Picture         =   "frmHome.frx":102E0
-         Style           =   1  'Graphical
-         TabIndex        =   4
-         Top             =   2535
-         Width           =   2500
+         cGradient       =   0
+         Mode            =   0
+         Value           =   0   'False
+         ImgAlign        =   4
+         Image           =   "frmHome.frx":117F0
+         ImgSize         =   32
+         cBack           =   12632256
       End
       Begin VB.Image imgToDoList 
          Height          =   1995
          Left            =   510
-         Picture         =   "frmHome.frx":113AA
+         Picture         =   "frmHome.frx":13DCA
          Stretch         =   -1  'True
          Top             =   480
          Width           =   1800
@@ -101,30 +118,38 @@ Begin VB.Form frmHome
       TabIndex        =   0
       Top             =   3000
       Width           =   2800
-      Begin VB.CommandButton btnEntrarCalculadora 
-         BackColor       =   &H00C0FFFF&
+      Begin lvButton.lvButtons_H lvEntrar 
+         Height          =   960
+         Index           =   0
+         Left            =   75
+         TabIndex        =   3
+         Top             =   2520
+         Width           =   2640
+         _ExtentX        =   4657
+         _ExtentY        =   1693
          Caption         =   "ENTRAR"
-         BeginProperty Font 
+         CapAlign        =   2
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Calibri"
-            Size            =   8.25
+            Size            =   9.75
             Charset         =   0
             Weight          =   700
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   840
-         Left            =   165
-         Picture         =   "frmHome.frx":12A57
-         Style           =   1  'Graphical
-         TabIndex        =   3
-         Top             =   2565
-         Width           =   2505
+         cGradient       =   0
+         Mode            =   0
+         Value           =   0   'False
+         ImgAlign        =   4
+         Image           =   "frmHome.frx":15477
+         ImgSize         =   32
+         cBack           =   12632256
       End
       Begin VB.Image imgCalculator 
          Height          =   1995
          Left            =   510
-         Picture         =   "frmHome.frx":13B21
+         Picture         =   "frmHome.frx":17A51
          Stretch         =   -1  'True
          Top             =   420
          Width           =   1800
@@ -136,28 +161,6 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Private Sub btnAdministrativo_Click()
-
-End Sub
-
-Private Sub btnEntrarCalculadora_Click()
-frmCalculator.Show
-End Sub
-
-Private Sub btnEntrarFavoritos_Click()
-frmMidia.Show
-End Sub
-
-
-Private Sub lblHomeIntro_Click()
-
-End Sub
-
-Private Sub btnEntrarTodolist_Click()
-frmConsultableToDoList.Show
-
-End Sub
-
 Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
 
     If MsgBox("ENCERRAR O PROGRAMA?", vbYesNo + vbQuestion, "E N C E R R A R") = vbYes Then
@@ -206,7 +209,7 @@ Private Sub Form_Resize()
     minWidth = 14000
     minHeight = 8000
 
-    ' Se estiver menor que o m�nimo, retorna ao tamanho anterior
+    ' Se estiver menor que o minimo, retorna ao tamanho anterior
     If Me.Width <= minWidth Then Me.Width = minWidth
     If Me.Height <= minHeight Then Me.Height = minHeight
 
@@ -222,9 +225,9 @@ Private Sub Form_Resize()
     frameCalculadora.Left = (frameToDoList.Left - frameCalculadora.Width - 2000)
     frameCalculadora.Top = (Me.ScaleHeight - frameCalculadora.Height) \ 2
 
-     'frameFavoritos a direita
-    frameFavoritos.Left = (frameToDoList.Left + frameCalculadora.Width + 2000)
-    frameFavoritos.Top = (Me.ScaleHeight - frameFavoritos.Height) \ 2
+     'frameMidias a direita
+    frameMidias.Left = (frameToDoList.Left + frameCalculadora.Width + 2000)
+    frameMidias.Top = (Me.ScaleHeight - frameMidias.Height) \ 2
      
 End Sub
 
@@ -238,4 +241,15 @@ End Sub
 
 Private Sub imgToDoList_Click()
 frmConsultableToDoList.Show
+End Sub
+
+Private Sub lvEntrar_Click(Index As Integer)
+Select Case Index
+Case 0
+frmCalculator.Show
+Case 1
+frmConsultableToDoList.Show
+Case 2
+frmMidia.Show
+End Select
 End Sub

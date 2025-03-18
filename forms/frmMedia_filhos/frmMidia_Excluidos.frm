@@ -1,5 +1,6 @@
 VERSION 5.00
 Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "MSFlxGrd.ocx"
+Object = "{0C8DE9F2-EAFC-44DF-A13F-B5A9B36ED780}#2.0#0"; "lvButton.ocx"
 Begin VB.Form frmMidia_Excluidos 
    AutoRedraw      =   -1  'True
    BackColor       =   &H00FF0000&
@@ -23,66 +24,86 @@ Begin VB.Form frmMidia_Excluidos
    ScaleHeight     =   7755
    ScaleWidth      =   14790
    StartUpPosition =   2  'CenterScreen
-   Begin VB.CommandButton btnVoltar 
-      BackColor       =   &H00FFFFFF&
-      Caption         =   "SAIR"
-      BeginProperty Font 
-         Name            =   "Calibri"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   1050
-      Left            =   9780
-      Picture         =   "frmMidia_Excluidos.frx":0000
-      Style           =   1  'Graphical
+   Begin lvButton.lvButtons_H lvExcluidosVoltar 
+      Height          =   1065
+      Left            =   9870
       TabIndex        =   5
-      Top             =   6690
-      Width           =   1830
-   End
-   Begin VB.CommandButton btnEstornarMedia 
-      BackColor       =   &H00FFFFFF&
-      Caption         =   "EXCLUIR"
-      BeginProperty Font 
+      Top             =   6720
+      Width           =   2010
+      _ExtentX        =   3545
+      _ExtentY        =   1879
+      Caption         =   "VOLTAR"
+      CapAlign        =   2
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Calibri"
-         Size            =   8.25
+         Size            =   9.75
          Charset         =   0
          Weight          =   700
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   1005
-      Left            =   6660
-      Picture         =   "frmMidia_Excluidos.frx":25CA
-      Style           =   1  'Graphical
+      cGradient       =   0
+      Mode            =   0
+      Value           =   0   'False
+      ImgAlign        =   4
+      Image           =   "frmMidia_Excluidos.frx":0000
+      ImgSize         =   32
+      cBack           =   -2147483633
+   End
+   Begin lvButton.lvButtons_H lvExcluidosRecuperar 
+      Height          =   1065
+      Left            =   6405
       TabIndex        =   4
       Top             =   6720
-      Width           =   1860
-   End
-   Begin VB.CommandButton btnReloadList 
-      BackColor       =   &H00FFFFFF&
-      Caption         =   "RECARREGAR LISTA"
-      BeginProperty Font 
+      Width           =   2010
+      _ExtentX        =   3545
+      _ExtentY        =   1879
+      Caption         =   "RECUPERAR"
+      CapAlign        =   2
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Calibri"
-         Size            =   8.25
+         Size            =   9.75
          Charset         =   0
          Weight          =   700
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   1020
-      Left            =   3735
-      MaskColor       =   &H00FFFFFF&
-      Picture         =   "frmMidia_Excluidos.frx":4B94
-      Style           =   1  'Graphical
+      cGradient       =   0
+      Mode            =   0
+      Value           =   0   'False
+      ImgAlign        =   4
+      Image           =   "frmMidia_Excluidos.frx":25DA
+      ImgSize         =   32
+      cBack           =   12632256
+   End
+   Begin lvButton.lvButtons_H lvExcluidosRecarregar 
+      Height          =   1065
+      Left            =   2835
       TabIndex        =   3
-      Top             =   6735
-      Width           =   1875
+      Top             =   6720
+      Width           =   2010
+      _ExtentX        =   3545
+      _ExtentY        =   1879
+      Caption         =   "RECARREGAR"
+      CapAlign        =   2
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Calibri"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      cGradient       =   0
+      Mode            =   0
+      Value           =   0   'False
+      ImgAlign        =   4
+      Image           =   "frmMidia_Excluidos.frx":4BB4
+      ImgSize         =   32
+      cBack           =   12632256
    End
    Begin VB.TextBox inputMediaFilter 
       BackColor       =   &H00C0C0FF&
@@ -157,6 +178,38 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 
 Private Sub btnEstornarMedia_Click()
+
+End Sub
+
+Private Sub btnReloadList_Click()
+ 
+End Sub
+
+Private Sub btnVoltar_Click()
+
+End Sub
+
+Private Sub Form_Load()
+     Call centralizarForm(Me)
+     Call setarColunasIniciaisDoGridMedia(Me)
+End Sub
+
+Private Sub inputMediaFilter_Change()
+Call pesquisarExcluidosNoInputMediaFilterComLike(Me)
+End Sub
+
+Private Sub lvExcluidosRecarregar_Click()
+  On Error GoTo erroAoRecarregarGridMediaExcluido
+
+   Call UnionFilmesSeriesMusicas
+   Call CarregarTodasAsMediasExcluidas(Me)
+   Exit Sub
+
+erroAoRecarregarGridMediaExcluido:
+     MsgBox "Erro: " & Err.Number & " - " & Err.Description, vbCritical, "E R R O !"
+End Sub
+
+Private Sub lvExcluidosRecuperar_Click()
 On Error GoTo erroEstornoDeMidia
    Dim codigoMediaSelecionada As Integer
    Dim grupoMediaSelecionada As String
@@ -164,7 +217,7 @@ On Error GoTo erroEstornoDeMidia
    Dim queryDeletarMedia As String
 
    If GridMedia.Rows <= 0 Or GridMedia.Row <= 0 Then
-      MsgBox "Selecione uma midia para excluir!", vbExclamation
+      MsgBox "Selecione uma midia para estornar!", vbExclamation
       Exit Sub
    End If
 
@@ -185,28 +238,7 @@ erroEstornoDeMidia:
    MsgBox "Erro: " & Err.Number & " - " & Err.Description, vbCritical, "E R R O !"
 End Sub
 
-Private Sub btnReloadList_Click()
-   On Error GoTo erroAoRecarregarGridMediaExcluido
-
-   Call UnionFilmesSeriesMusicas
-   Call CarregarTodasAsMediasExcluidas(Me)
-   Exit Sub
-
-erroAoRecarregarGridMediaExcluido:
-     MsgBox "Erro: " & Err.Number & " - " & Err.Description, vbCritical, "E R R O !"
-End Sub
-
-Private Sub btnVoltar_Click()
+Private Sub lvExcluidosVoltar_Click()
 frmMidia.Show
 Unload Me
 End Sub
-
-Private Sub Form_Load()
-     Call centralizarForm(Me)
-     Call setarColunasIniciaisDoGridMedia(Me)
-End Sub
-
-Private Sub inputMediaFilter_Change()
-Call pesquisarExcluidosNoInputMediaFilterComLike(Me)
-End Sub
-

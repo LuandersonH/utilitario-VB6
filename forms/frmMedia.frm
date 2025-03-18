@@ -32,13 +32,13 @@ Begin VB.Form frmMidia
       Width           =   2000
       _ExtentX        =   3519
       _ExtentY        =   1773
-      Caption         =   "ESTORNAR"
+      Caption         =   "RECUPERAR"
       CapAlign        =   2
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
-         Size            =   8.25
+         Name            =   "Calibri"
+         Size            =   9.75
          Charset         =   0
-         Weight          =   400
+         Weight          =   700
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
@@ -132,7 +132,7 @@ Begin VB.Form frmMidia
       ImgSize         =   32
       cBack           =   12632256
    End
-   Begin lvButton.lvButtons_H lvAdicionar 
+   Begin lvButton.lvButtons_H lvCadastrar 
       Height          =   1005
       Left            =   500
       TabIndex        =   3
@@ -140,7 +140,7 @@ Begin VB.Form frmMidia
       Width           =   1995
       _ExtentX        =   3519
       _ExtentY        =   1773
-      Caption         =   "ADICIONAR"
+      Caption         =   "CADASTRAR"
       CapAlign        =   2
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Calibri"
@@ -242,7 +242,7 @@ Private Sub inputMediaFilter_Change()
 Call pesquisarNoInputMediaFilterComLike(Me)
 End Sub
 
-Private Sub lvAdicionar_Click()
+Private Sub lvCadastrar_Click()
 frmMidia_Cadastro.Show
 Unload Me
 End Sub
