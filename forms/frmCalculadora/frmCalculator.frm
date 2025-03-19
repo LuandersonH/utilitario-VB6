@@ -378,73 +378,103 @@ Option Explicit
 Dim var1 As Double, var2 As Double
 Dim opern As String
 
+Function confirmarOperacao()
+    var2 = Val(display.Text)
+    Select Case opern
+       'som e sub
+       Case "+": display.Text = var1 + var2
+       Case "-": display.Text = var1 - var2
+       'div e mult
+       Case "/": display.Text = var1 / var2
+       Case "*": display.Text = var1 * var2
+       'percent
+       Case "%": display.Text = (var1 * 1 / 100) * var2
+    End Select
+End Function
+
+Private Sub Form_Load()
+    Call centralizarForm(Me)
+End Sub
 
 Private Sub btnClear_Click()
-display.Text = ""
+    display.Text = ""
 End Sub
 
 Private Sub btnConfirm_Click()
-var2 = Val(display.Text)
-Select Case opern
-   'som e sub
-   Case "+": display.Text = var1 + var2
-   Case "-": display.Text = var1 - var2
-   'div e mult
-   Case "/": display.Text = var1 / var2
-   Case "*": display.Text = var1 * var2
-   'percent
-   Case "%": display.Text = (var1 * 1 / 100) * var2
-   
-End Select
-
+    Call confirmarOperacao
 End Sub
 
 Private Sub btnDivision_Click()
-var1 = Val(display.Text)
-opern = "/"
-display.Text = ""
+    var1 = Val(display.Text)
+    opern = "/"
+    display.Text = ""
 End Sub
 
 Private Sub btnMult_Click()
-var1 = Val(display.Text)
-opern = "*"
-display.Text = ""
+    var1 = Val(display.Text)
+    opern = "*"
+    display.Text = ""
 End Sub
 
 Private Sub btnPercantage_Click(Index As Integer)
-var1 = Val(display.Text)
-opern = "%"
-display.Text = ""
+    var1 = Val(display.Text)
+    opern = "%"
+    display.Text = ""
 End Sub
 
 Private Sub btnPoint_Click()
-display.Text = display.Text + "."
+    display.Text = display.Text + "."
 End Sub
 
 Private Sub btnSome_Click()
-var1 = Val(display.Text)
-opern = "+"
-display.Text = ""
+    var1 = Val(display.Text)
+    opern = "+"
+    display.Text = ""
 End Sub
 
 Private Sub btnSub_Click()
-var1 = Val(display.Text)
-opern = "-"
-display.Text = ""
+    var1 = Val(display.Text)
+    opern = "-"
+    display.Text = ""
 End Sub
 
 Private Sub digits_Click(Index As Integer)
-display.Text = display.Text + digits(Index).Caption
+    display.Text = display.Text + digits(Index).Caption
 End Sub
 
 Private Sub display_KeyPress(KeyAscii As Integer)
-       If Not (KeyAscii >= 48 And KeyAscii <= 57 Or KeyAscii = 8) Then
+Const mult As Integer = 42  'KeyAscii *
+Const soma As Integer = 43  'KeyAscii +
+Const subtracao As Integer = 45 'KeyAscii -
+Const div As Integer = 47   'KeyAscii /
+Const porcentagem As Integer = 37   'KeyAscii %
+Const backspace As Integer = 8
+Const delete As Integer = 46
+Const igual As Integer = 61 'KeyAscii =
+
+    If KeyAscii = 61 Or KeyAscii = 13 Then
+        Call confirmarOperacao
+        KeyAscii = 0
+        Exit Sub
+    End If
+
+    'KeyAscii >= 48 And KeyAscii <= 57 = numeros de 0 até 9
+    If Not ((KeyAscii >= 48 And KeyAscii <= 57) Or KeyAscii = backspace Or _
+            KeyAscii = mult Or KeyAscii = soma Or KeyAscii = subtracao Or _
+            KeyAscii = div Or KeyAscii = porcentagem Or KeyAscii = delete) Then
         KeyAscii = 0
     End If
 
+    
+    If KeyAscii = mult Or KeyAscii = soma Or KeyAscii = subtracao Or KeyAscii = div Or KeyAscii = porcentagem Then
+
+        var1 = Val(display.Text)
+        opern = Chr(KeyAscii)
+        display.Text = ""
+        ' Impede que o operador apareça no display
+        KeyAscii = 0
+    End If
 End Sub
 
 
-Private Sub Form_Load()
-         Call centralizarForm(Me)
-End Sub
+
