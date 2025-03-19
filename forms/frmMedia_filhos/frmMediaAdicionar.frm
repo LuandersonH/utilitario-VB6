@@ -358,6 +358,8 @@ End Sub
 
 Private Sub lvCadastroAdicionar_Click()
 
+Call removerEspacosEmBranco(Me)
+
  If Trim(txtNome.Text) = "" Then
    MsgBox "O campo de nome nao pode estar vazio.", vbCritical, "PREENCHA OS CAMPOS"
    Exit Sub

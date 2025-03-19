@@ -231,6 +231,8 @@ On Error GoTo erroEstornoDeMidia
       If connectBD.State = adStateClosed Then connectBD.Open
       queryDeletarMedia = "UPDATE " & grupoMediaSelecionada & " Set Excluido = 0 Where Codigo = " & codigoMediaSelecionada
       connectBD.Execute queryDeletarMedia
+   Call UnionFilmesSeriesMusicas
+   Call CarregarTodasAsMediasExcluidas(Me)
    End If
    Exit Sub
 

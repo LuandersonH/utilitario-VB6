@@ -129,6 +129,17 @@ End Function
 'frm CADASTRO DE MIDIAS ABAIXO
 'frm CADASTRO DE MIDIAS ABAIXO
 
+Public Function removerEspacosEmBranco(frm)
+    frm.txtNome.Text = Trim(frm.txtNome.Text)
+    frm.txtAtoresParticipantes.Text = Trim(frm.txtAtoresParticipantes.Text)
+    frm.txtDuracaoTemporadasAlbum.Text = Trim(frm.txtDuracaoTemporadasAlbum.Text)
+    frm.txtGenero.Text = Trim(frm.txtGenero.Text)
+    frm.txtDiretorArtista.Text = Trim(frm.txtDiretorArtista.Text)
+    frm.txtObservacao.Text = Trim(frm.txtObservacao.Text)
+End Function
+
+
+
 
 Public Function AtualizarCamposPorTipo(frm)
      ' Trim vai remover os espacos em branco
