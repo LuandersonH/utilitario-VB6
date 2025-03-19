@@ -32,7 +32,7 @@ Begin VB.Form frmMidia
       Width           =   2000
       _ExtentX        =   3519
       _ExtentY        =   1773
-      Caption         =   "RECUPERAR"
+      Caption         =   "RECUPERAR MIDIAS"
       CapAlign        =   2
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Calibri"
@@ -233,8 +233,16 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Private Sub Form_Load()
+On Error GoTo erroLoadAoRecarregarGridMedia
      Call centralizarForm(Me)
      Call setarColunasIniciaisDoGridMedia(Me)
+     
+     Call UnionFilmesSeriesMusicas
+     Call CarregarTodasAsMedias(Me)
+     Exit Sub
+
+erroLoadAoRecarregarGridMedia:
+     MsgBox "Erro: " & Err.Number & " - " & Err.Description, vbCritical, "E R R O !"
 End Sub
 
 

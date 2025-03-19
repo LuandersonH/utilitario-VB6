@@ -333,9 +333,12 @@ Private Sub btnVoltar_Click()
 End Sub
 
 Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
-frmMidia.Show
-Unload Me
-
+    If MsgBox("Deseja realmente sair?", vbYesNo + vbQuestion, "Confirmar saída") = vbYes Then
+        frmMidia.Show
+        Unload Me
+    Else
+        Cancel = 1
+    End If
 End Sub
 
 Private Sub cboTipo_Click()
@@ -470,7 +473,7 @@ ErroNoCadastroDeSerie:
                cmdMusica.Parameters.Append cmdMusica.CreateParameter(, adVarChar, adParamInput, 255, txtNome.Text)
                cmdMusica.Parameters.Append cmdMusica.CreateParameter(, adVarChar, adParamInput, 255, txtDiretorArtista.Text)
                cmdMusica.Parameters.Append cmdMusica.CreateParameter(, adVarChar, adParamInput, 255, txtAtoresParticipantes.Text)
-               cmdMusica.Parameters.Append cmdFilme.CreateParameter(, adInteger, adParamInput, , CInt(txtDuracaoTemporadasAlbum.Text))
+               cmdMusica.Parameters.Append cmdMusica.CreateParameter(, adInteger, adParamInput, , CInt(txtDuracaoTemporadasAlbum.Text))
                cmdMusica.Parameters.Append cmdMusica.CreateParameter(, adVarChar, adParamInput, 255, txtGenero.Text)
                cmdMusica.Parameters.Append cmdMusica.CreateParameter(, adInteger, adParamInput, , CInt(cboNota.Text))
                cmdMusica.Parameters.Append cmdMusica.CreateParameter(, adVarChar, adParamInput, 255, txtObservacao.Text)

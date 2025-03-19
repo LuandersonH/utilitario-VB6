@@ -190,8 +190,14 @@ Private Sub btnVoltar_Click()
 End Sub
 
 Private Sub Form_Load()
+On Error GoTo erroLoadAoRecarregarGridMediaExcluido
      Call centralizarForm(Me)
      Call setarColunasIniciaisDoGridMedia(Me)
+     Call UnionFilmesSeriesMusicas
+     Call CarregarTodasAsMediasExcluidas(Me)
+     Exit Sub
+erroLoadAoRecarregarGridMediaExcluido:
+     MsgBox "Erro: " & Err.Number & " - " & Err.Description, vbCritical, "E R R O !"
 End Sub
 
 Private Sub inputMediaFilter_Change()

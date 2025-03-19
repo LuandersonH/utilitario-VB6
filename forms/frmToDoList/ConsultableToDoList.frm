@@ -57,9 +57,9 @@ Begin VB.Form frmConsultableToDoList
       TabCaption(1)   =   "Histórico"
       TabPicture(1)   =   "ConsultableToDoList.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "inputHistoryFilter"
+      Tab(1).Control(0)=   "lblHistoryInput"
       Tab(1).Control(1)=   "GridHistorico"
-      Tab(1).Control(2)=   "lblHistoryInput"
+      Tab(1).Control(2)=   "inputHistoryFilter"
       Tab(1).ControlCount=   3
       Begin VB.TextBox inputHistoryFilter 
          BackColor       =   &H00C0E0FF&
@@ -285,7 +285,7 @@ Private Sub btnDeleteTask_Click()
 End Sub
 
 Private Sub btnClearAll_Click()
-     resposta = MsgBox("Isso apagarï¿½ TODAS AS TAREFAS e nï¿½o poderï¿½ ser desfeito, deseja continuar?", vbExclamation, "Apagar todas as tarefas")
+     resposta = MsgBox("Isso apagara TODAS AS TAREFAS e nao podera ser desfeito, deseja continuar?", vbExclamation, "Apagar todas as tarefas")
      
      If resposta = vbOK Then
           Call deleteAllTasks(Me)

@@ -182,7 +182,7 @@ Private Sub Form_Load()
 End Sub
 
 Private Sub Form_Paint()
-'Me.Line (x1, y1) - (x2, y2), cor, [op��o]
+'Me.Line (x1, y1) - (x2, y2), cor, [opcao]
 '-(x1, y1): Coordenadas do ponto inicial (canto superior esquerdo do retangulo).
 '-(x2, y2): Coordenadas do ponto final (canto inferior direito do retangulo).
 '-[op��o]: Se for B, desenha apenas a borda. Se for BF, preenche o retangulo.
