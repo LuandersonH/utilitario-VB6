@@ -210,8 +210,10 @@ Private Sub Form_Resize()
     minHeight = 8000
 
     ' Se estiver menor que o minimo, retorna ao tamanho anterior
-    If Me.Width <= minWidth Then Me.Width = minWidth
-    If Me.Height <= minHeight Then Me.Height = minHeight
+     If Me.WindowState = vbNormal Then
+          If Me.Width <= minWidth Then Me.Width = minWidth
+          If Me.Height <= minHeight Then Me.Height = minHeight
+     End If
 
     ' Atualiza o tamanho salvo
     lastWidth = Me.Width
