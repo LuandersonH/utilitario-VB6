@@ -327,24 +327,6 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-
-Private Sub btnVoltar_Click()
-
-End Sub
-
-Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
-    If MsgBox("Deseja realmente sair?", vbYesNo + vbQuestion, "Confirmar saída") = vbYes Then
-        frmMidia.Show
-        Unload Me
-    Else
-        Cancel = 1
-    End If
-End Sub
-
-Private Sub cboTipo_Click()
-     Call AtualizarCamposPorTipo(Me)
-End Sub
-
 Private Sub Form_Load()
      'Adicionando as opcoes no cboNota - notas de 1 a 5
     Dim i As Integer
@@ -357,6 +339,10 @@ Private Sub Form_Load()
 
      Call centralizarForm(Me)
 
+End Sub
+
+Private Sub cboTipo_Click()
+     Call AtualizarCamposPorTipo(Me)
 End Sub
 
 Private Sub lvCadastroAdicionar_Click()
@@ -404,7 +390,6 @@ End If
                cmdFilme.Parameters.Append cmdFilme.CreateParameter(, adVarChar, adParamInput, 255, txtObservacao.Text)
                cmdFilme.Parameters.Append cmdFilme.CreateParameter(, adVarChar, adParamInput, 6, "Filmes")
                cmdFilme.Parameters.Append cmdFilme.CreateParameter(, adInteger, adParamInput, , 0)
-
 
                cmdFilme.Execute
                
@@ -495,11 +480,6 @@ ErroNoCadastroDeMusica:
      End Select
 End Sub
 
-Private Sub lvCadastroVoltar_Click()
-frmMidia.Show
-Unload Me
-End Sub
-
 Private Sub txtDuracaoTemporadasAlbum_KeyPress(KeyAscii As Integer)
 
 If txtDuracaoTemporadasAlbum.Tag = "tagDuracao" Or txtDuracaoTemporadasAlbum.Tag = "tagTemporadas" Then
@@ -541,4 +521,17 @@ Private Sub txtDuracaoTemporadasAlbum_Change()
              txtDuracaoTemporadasAlbum.SelStart = Len(txtDuracaoTemporadasAlbum.Text) ' Mantém o cursor no final
          End If
      End If
+End Sub
+
+Private Sub Form_Unload(Cancel As Integer)
+    If MsgBox("Deseja realmente sair?", vbYesNo + vbQuestion, "Confirmar saida") = vbYes Then
+        frmMidia.Show
+    Else
+        Cancel = 1
+    End If
+End Sub
+
+Private Sub lvCadastroVoltar_Click()
+'Unload abrirá uma msgBox vbYesNo definida em Form_Unload
+Unload Me
 End Sub
