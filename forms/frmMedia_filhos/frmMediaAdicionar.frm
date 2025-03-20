@@ -364,8 +364,6 @@ End If
                txtDuracaoTemporadasAlbum = "00:00"
                End If
      
-
-     
                ' Garante que a conexao esta aberta
                If connectBD.State = adStateClosed Then connectBD.Open
      
@@ -403,7 +401,11 @@ ErroNoCadastroDeFilme:
      
      Case "SERIE"
      On Error GoTo ErroNoCadastroDeSerie
-     
+
+               If Len(txtDuracaoTemporadasAlbum.Text) = 0 Then
+               txtDuracaoTemporadasAlbum = "0"
+               End If
+
                ' Garante que a conexao esta aberta
                If connectBD.State = adStateClosed Then connectBD.Open
      
@@ -440,7 +442,7 @@ ErroNoCadastroDeSerie:
      Case "MUSICA"
           
      On Error GoTo ErroNoCadastroDeMusica
-     
+               MsgBox txtDuracaoTemporadasAlbum.Text
                ' Garante que a conexao esta aberta
                If connectBD.State = adStateClosed Then connectBD.Open
      
@@ -458,7 +460,7 @@ ErroNoCadastroDeSerie:
                cmdMusica.Parameters.Append cmdMusica.CreateParameter(, adVarChar, adParamInput, 255, txtNome.Text)
                cmdMusica.Parameters.Append cmdMusica.CreateParameter(, adVarChar, adParamInput, 255, txtDiretorArtista.Text)
                cmdMusica.Parameters.Append cmdMusica.CreateParameter(, adVarChar, adParamInput, 255, txtAtoresParticipantes.Text)
-               cmdMusica.Parameters.Append cmdMusica.CreateParameter(, adInteger, adParamInput, , CInt(txtDuracaoTemporadasAlbum.Text))
+               cmdMusica.Parameters.Append cmdMusica.CreateParameter(, adVarChar, adParamInput, 255, txtDuracaoTemporadasAlbum.Text)
                cmdMusica.Parameters.Append cmdMusica.CreateParameter(, adVarChar, adParamInput, 255, txtGenero.Text)
                cmdMusica.Parameters.Append cmdMusica.CreateParameter(, adInteger, adParamInput, , CInt(cboNota.Text))
                cmdMusica.Parameters.Append cmdMusica.CreateParameter(, adVarChar, adParamInput, 255, txtObservacao.Text)

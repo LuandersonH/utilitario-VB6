@@ -239,7 +239,21 @@ On Error GoTo erroLoadAoRecarregarGridMedia
      
      Call UnionFilmesSeriesMusicas
      Call CarregarTodasAsMedias(Me)
-     Exit Sub
+
+     With GridMedia
+         Dim qntColunas As Integer
+         Dim i As Integer
+     
+         qntColunas = .Cols ' Obtém a quantidade de colunas
+     
+         For i = 0 To qntColunas - 1 ' Percorre todas as colunas da primeira linha
+             .Row = 0
+             .Col = i
+             .CellBackColor = &HF0C090
+    Next i
+End With
+
+Exit Sub
 
 erroLoadAoRecarregarGridMedia:
      MsgBox "Erro: " & Err.Number & " - " & Err.Description, vbCritical, "E R R O !"
