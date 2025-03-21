@@ -9,24 +9,25 @@
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{63FFBF48-3F92-48D3-9065-89C9621A15A9}
+AppId={{59DC216A-9E67-426A-B4FE-1948F80A9A40}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
 AppPublisher={#MyAppPublisher}
-DefaultDirName=C:\apps\Utilitario
+DefaultDirName=C:\Utilitario
 UninstallDisplayIcon={app}\{#MyAppExeName}
 DisableProgramGroupPage=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only).
 ;PrivilegesRequired=lowest
 OutputDir=C:\apps\VB6\utilitario
-OutputBaseFilename=Instalador_Utilitario
+OutputBaseFilename=Install-Utilitario
+SetupIconFile=C:\Users\luand\Downloads\utils.ico
 SolidCompression=yes
 WizardStyle=modern
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
-Name: "portuguese"; MessagesFile: "compiler:Languages\Portuguese.isl"
+Name: "brazilianportuguese"; MessagesFile: "compiler:Languages\BrazilianPortuguese.isl"
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
@@ -35,7 +36,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Source: "C:\apps\VB6\utilitario\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\apps\VB6\utilitario\bd_utilitarios.mdb"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\apps\VB6\utilitario\caminhoBD.txt"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\apps\VB6\utilitario\imgs\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\apps\VB6\utilitario\components\LVButton.ocx"; DestDir: "{app}\Components"; Flags: uninsneveruninstall
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
@@ -44,4 +45,5 @@ Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: de
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
+Filename: "regsvr32.exe"; Parameters: "/s ""{app}\Components\LVButton.ocx"""; Flags: runhidden
 

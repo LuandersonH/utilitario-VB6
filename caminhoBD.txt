@@ -1,1 +1,1 @@
-C:\apps\VB6\utilitario\bd_utilitarios.mdb
+C:\Utilitario\bd_utilitarios.mdb

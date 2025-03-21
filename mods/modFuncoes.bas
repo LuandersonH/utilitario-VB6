@@ -131,23 +131,26 @@ End Function
 
 
 Public Function deleteTasks(frm As Object)
+On Error GoTo erroDeleteTask
+
      Dim deleteTarefaSelecionada As Integer
-     deleteTarefaSelecionada = frm.listTasks.ItemData(frm.listTasks.ListIndex)
 
-     On Error GoTo erroDeleteTask
+     If frm.listTasks.ListIndex = -1 Then
+          MsgBox "Nenhuma tarefa selecionada para excluir!", vbExclamation, "Aviso"
+          Exit Function
+     End If
 
-     If deleteTarefaSelecionada <> -1 Then
+           deleteTarefaSelecionada = frm.listTasks.ItemData(frm.listTasks.ListIndex)
+
           queryDeleteTaskSelecionada = "DELETE FROM Tasks WHERE Codigo = " & deleteTarefaSelecionada
 
           If connectBD.State = adStateClosed Then connectBD.Open
+
           connectBD.Execute queryDeleteTaskSelecionada
      
           Call reloadListTasks(frm)
+
           Exit Function
-     Else
-          MsgBox "Selecione uma tarefa a ser excluída!", vbExclamation, "Aviso"
-          Exit Function
-     End If
 
 erroDeleteTask:
      MsgBox "Erro ao excluir tarefa: " & Err.Number & " - " & Err.Description, vbCritical, "Erro"

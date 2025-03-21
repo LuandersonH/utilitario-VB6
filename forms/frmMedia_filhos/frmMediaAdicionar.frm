@@ -334,6 +334,7 @@ Private Sub Form_Load()
           cboNota.AddItem i
      Next i
 
+     'definindo que ao iniciar, nota e tipo serao "1" e "Filme":
      cboNota.Text = 1
      cboTipo.Text = "Filme"
 
@@ -401,7 +402,7 @@ ErroNoCadastroDeFilme:
      
      Case "SERIE"
      On Error GoTo ErroNoCadastroDeSerie
-
+               'corrige o campo temporadas
                If Len(txtDuracaoTemporadasAlbum.Text) = 0 Then
                txtDuracaoTemporadasAlbum = "0"
                End If
@@ -442,7 +443,6 @@ ErroNoCadastroDeSerie:
      Case "MUSICA"
           
      On Error GoTo ErroNoCadastroDeMusica
-               MsgBox txtDuracaoTemporadasAlbum.Text
                ' Garante que a conexao esta aberta
                If connectBD.State = adStateClosed Then connectBD.Open
      
@@ -485,14 +485,14 @@ End Sub
 Private Sub txtDuracaoTemporadasAlbum_KeyPress(KeyAscii As Integer)
 
 If txtDuracaoTemporadasAlbum.Tag = "tagDuracao" Or txtDuracaoTemporadasAlbum.Tag = "tagTemporadas" Then
-     ' Permitir numeros de 0 a 9 (ASCII 49 a 57), dois pontos ":" (ASCII 58) e Backspace (ASCII 8)
-     If (KeyAscii >= 48 And KeyAscii <= 57) Or KeyAscii = 8 Then 'Or KeyAscii = 58 - antes permitia 2 pontos
+     ' Permitir numeros de 0 a 9 (ASCII 49 a 57) e Backspace (ASCII 8)
+     If (KeyAscii >= 48 And KeyAscii <= 57) Or KeyAscii = 8 Then
+         
                If KeyAscii = 8 And Len(txtDuracaoTemporadasAlbum.Text) = 3 And txtDuracaoTemporadasAlbum.SelStart = Len(txtDuracaoTemporadasAlbum.Text) Then
                     txtDuracaoTemporadasAlbum.Text = Left(txtDuracaoTemporadasAlbum.Text, 1)
-                    
                End If
 
-          Exit Sub  ' Permite a tecla pressionada
+          Exit Sub
      End If
 
      If (KeyAscii >= 49 And KeyAscii <= 57) Then
@@ -505,7 +505,7 @@ If txtDuracaoTemporadasAlbum.Tag = "tagDuracao" Or txtDuracaoTemporadasAlbum.Tag
           Exit Sub
      End If
 
-     KeyAscii = 0 ' impedir que a tecla seja processada
+     KeyAscii = 0
 End If
           
     
@@ -514,7 +514,6 @@ End Sub
 Private Sub txtDuracaoTemporadasAlbum_Change()
      If txtDuracaoTemporadasAlbum.Tag = "tagDuracao" Then
          Dim valor As String
-         'txtDuracaoTemporadasAlbum.Text = Replace(txtDuracaoTemporadasAlbum.Text, ":", "")
          valor = Replace(txtDuracaoTemporadasAlbum.Text, ":", "") ' Remove os ":"
 
          ' Se tiver pelo menos 2 dígitos, insere os ":"
@@ -525,15 +524,14 @@ Private Sub txtDuracaoTemporadasAlbum_Change()
      End If
 End Sub
 
-Private Sub Form_Unload(Cancel As Integer)
-    If MsgBox("Deseja realmente sair?", vbYesNo + vbQuestion, "Confirmar saida") = vbYes Then
-        frmMidia.Show
-    Else
-        Cancel = 1
-    End If
-End Sub
+'Private Sub Form_Unload(Cancel As Integer)
+    'If MsgBox("Deseja realmente sair?", vbYesNo + vbQuestion, "Confirmar saida") = vbYes Then
+        'frmMidia.Show
+    'Else
+        'Cancel = 1
+    'End If
+'End Sub
 
 Private Sub lvCadastroVoltar_Click()
-'Unload abrirá uma msgBox vbYesNo definida em Form_Unload
 Unload Me
 End Sub

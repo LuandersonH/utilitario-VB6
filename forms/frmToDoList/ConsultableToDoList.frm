@@ -57,9 +57,9 @@ Begin VB.Form frmConsultableToDoList
       TabCaption(1)   =   "Histórico"
       TabPicture(1)   =   "ConsultableToDoList.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "lblHistoryInput"
+      Tab(1).Control(0)=   "inputHistoryFilter"
       Tab(1).Control(1)=   "GridHistorico"
-      Tab(1).Control(2)=   "inputHistoryFilter"
+      Tab(1).Control(2)=   "lblHistoryInput"
       Tab(1).ControlCount=   3
       Begin VB.TextBox inputHistoryFilter 
          BackColor       =   &H00C0E0FF&
@@ -90,18 +90,30 @@ Begin VB.Form frmConsultableToDoList
          _ExtentY        =   11748
          _Version        =   393216
          Rows            =   1
+         FixedCols       =   0
          RowHeightMin    =   500
-         BackColor       =   14737632
-         BackColorFixed  =   14737632
-         BackColorSel    =   16777215
-         ForeColorSel    =   16777215
-         BackColorBkg    =   14737632
+         BackColor       =   12632319
+         ForeColor       =   0
+         BackColorFixed  =   12648384
+         ForeColorFixed  =   0
+         BackColorSel    =   12632319
+         ForeColorSel    =   0
+         BackColorBkg    =   12632319
          GridColor       =   0
          WordWrap        =   -1  'True
          GridLinesFixed  =   1
          SelectionMode   =   1
          AllowUserResizing=   1
          Appearance      =   0
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Calibri"
+            Size            =   12
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
       End
       Begin VB.CommandButton btnClearAll 
          BackColor       =   &H000000FF&

@@ -1,8 +1,8 @@
 VERSION 5.00
-Object = "{0C8DE9F2-EAFC-44DF-A13F-B5A9B36ED780}#2.0#0"; "lvButton.ocx"
+Object = "{0C8DE9F2-EAFC-44DF-A13F-B5A9B36ED780}#2.0#0"; "LVButton.ocx"
 Begin VB.Form frmHome 
    BackColor       =   &H00E0E0E0&
-   Caption         =   "UTILIT�RIO"
+   Caption         =   "UTILITARIO"
    ClientHeight    =   7980
    ClientLeft      =   60
    ClientTop       =   405
@@ -16,6 +16,7 @@ Begin VB.Form frmHome
       Italic          =   0   'False
       Strikethrough   =   0   'False
    EndProperty
+   Icon            =   "frmHome.frx":0000
    LinkTopic       =   "Form1"
    ScaleHeight     =   7980
    ScaleWidth      =   13995
@@ -52,14 +53,14 @@ Begin VB.Form frmHome
          Mode            =   0
          Value           =   0   'False
          ImgAlign        =   4
-         Image           =   "frmHome.frx":0000
+         Image           =   "frmHome.frx":94CA
          ImgSize         =   32
          cBack           =   14737632
       End
       Begin VB.Image imgFavs 
          Height          =   1995
          Left            =   555
-         Picture         =   "frmHome.frx":25DA
+         Picture         =   "frmHome.frx":BAA4
          Stretch         =   -1  'True
          Top             =   465
          Width           =   1800
@@ -97,14 +98,14 @@ Begin VB.Form frmHome
          Mode            =   0
          Value           =   0   'False
          ImgAlign        =   4
-         Image           =   "frmHome.frx":117F0
+         Image           =   "frmHome.frx":1ACBA
          ImgSize         =   32
          cBack           =   14737632
       End
       Begin VB.Image imgToDoList 
          Height          =   1995
          Left            =   510
-         Picture         =   "frmHome.frx":13DCA
+         Picture         =   "frmHome.frx":1D294
          Stretch         =   -1  'True
          Top             =   480
          Width           =   1800
@@ -142,14 +143,14 @@ Begin VB.Form frmHome
          Mode            =   0
          Value           =   0   'False
          ImgAlign        =   4
-         Image           =   "frmHome.frx":15477
+         Image           =   "frmHome.frx":1E941
          ImgSize         =   32
          cBack           =   14737632
       End
       Begin VB.Image imgCalculator 
          Height          =   1995
          Left            =   510
-         Picture         =   "frmHome.frx":17A51
+         Picture         =   "frmHome.frx":20F1B
          Stretch         =   -1  'True
          Top             =   420
          Width           =   1800

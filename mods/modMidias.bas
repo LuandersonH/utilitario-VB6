@@ -28,18 +28,20 @@ Public Function setarColunasIniciaisDoGridMedia(frm)
                .TextMatrix(0, 11) = "Duracao"
                .TextMatrix(0, 12) = "Grupo"
 
-               .ColWidth(0) = frm.Width / 12
-               .ColWidth(1) = frm.Width / 12
-               .ColWidth(2) = frm.Width / 12
-               .ColWidth(3) = frm.Width / 12
-               .ColWidth(4) = frm.Width / 12
-               .ColWidth(5) = frm.Width / 12
-               .ColWidth(6) = frm.Width / 12
-               .ColWidth(7) = frm.Width / 12
-               .ColWidth(8) = frm.Width / 12
-               .ColWidth(9) = frm.Width / 12
-               .ColWidth(10) = frm.Width / 12
-               .ColWidth(11) = frm.Width / 12
+
+               .ColWidth(0) = 1000
+               .ColWidth(1) = 4500
+               .ColWidth(2) = 3500
+               .ColWidth(3) = 3500
+               .ColWidth(4) = 1000
+               .ColWidth(5) = 2500
+               .ColWidth(6) = 1000
+               .ColWidth(7) = 4500
+               .ColWidth(8) = 2500
+               .ColWidth(9) = 2500
+               .ColWidth(10) = 1000
+               .ColWidth(11) = 1000
+
      End With
 End Function
 
