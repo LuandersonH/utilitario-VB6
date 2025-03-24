@@ -36,7 +36,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Source: "C:\apps\VB6\utilitario\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\apps\VB6\utilitario\bd_utilitarios.mdb"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\apps\VB6\utilitario\caminhoBD.txt"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\apps\VB6\utilitario\components\LVButton.ocx"; DestDir: "{app}\Components"; Flags: uninsneveruninstall
+Source: "C:\apps\VB6\utilitario\components\LVButton.ocx"; DestDir: "{app}\Components"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
