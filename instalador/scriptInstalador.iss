@@ -9,7 +9,7 @@
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{59DC216A-9E67-426A-B4FE-1948F80A9A40}
+AppId={{59DC216A-9E67-426A-B4FE-1948F80A9A40}}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -36,7 +36,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Source: "C:\apps\VB6\utilitario\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\apps\VB6\utilitario\bd_utilitarios.mdb"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\apps\VB6\utilitario\caminhoBD.txt"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\apps\VB6\utilitario\components\LVButton.ocx"; DestDir: "{app}\Components"; Flags: ignoreversion
+Source: "C:\apps\VB6\utilitario\components\LVButton.ocx"; DestDir: "C:\Windows\SysWOW64"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
@@ -45,5 +45,5 @@ Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: de
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
-Filename: "regsvr32.exe"; Parameters: "/s ""{app}\Components\LVButton.ocx"""; Flags: runhidden
+Filename: "regsvr32.exe"; Parameters: "/s ""C:\Windows\SysWOW64\LVButton.ocx"""; Flags: runhidden
 
