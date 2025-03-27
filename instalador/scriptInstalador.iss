@@ -39,7 +39,7 @@ Source: "C:\apps\VB6\utilitario\caminhoBD.txt"; DestDir: "{app}"; Flags: ignorev
 Source: "C:\apps\VB6\utilitario\components\LVButton.ocx"; DestDir: "{sys}"; Flags: regserver
 Source: "C:\apps\VB6\utilitario\components\MSFlxGrd.ocx"; DestDir: "{sys}"; Flags: regserver
 Source: "C:\apps\VB6\utilitario\components\msmask32.ocx"; DestDir: "{sys}"; Flags: regserver
-Source: "C:\apps\VB6\utilitario\components\TabCtl32.ocx"; DestDir: "{sys}"; Flags: regserver
+Source: "C:\apps\VB6\utilitario\components\TabCtl32.Ocx"; DestDir: "{sys}"; Flags: regserver
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

@@ -1,4 +1,2 @@
-Line 40: Property TabPicture(0) in sstabToDoList had an invalid file reference.
-Line 58: Property TabPicture(1) in sstabToDoList had an invalid file reference.
-Line 206: Property ItemData in listTasks had an invalid file reference.
-Line 208: Property List in listTasks had an invalid file reference.
+Line 25: Class TabDlg.SSTab of control sstabToDoList was not a loaded control class.
+Line 83: Class MSFlexGridLib.MSFlexGrid of control GridHistorico was not a loaded control class.
