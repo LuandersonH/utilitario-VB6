@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{0C8DE9F2-EAFC-44DF-A13F-B5A9B36ED780}#2.0#0"; "lvButton.ocx"
+Object = "{0C8DE9F2-EAFC-44DF-A13F-B5A9B36ED780}#2.0#0"; "LVButton.ocx"
 Begin VB.Form frmMidia_Cadastro 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Cadastro"
@@ -346,6 +346,7 @@ Private Sub cboTipo_Click()
      Call AtualizarCamposPorTipo(Me)
 End Sub
 
+
 Private Sub lvCadastroAdicionar_Click()
 
 Call removerEspacosEmBranco(Me)
@@ -360,11 +361,23 @@ End If
           Case "FILME"
           On Error GoTo ErroNoCadastroDeFilme
 
-               'corrige o campo "Duracao"
+
                If Len(txtDuracaoTemporadasAlbum.Text) = 0 Then
-               txtDuracaoTemporadasAlbum = "00:00"
+                    txtDuracaoTemporadasAlbum.Text = "00:00"
                End If
-     
+               
+               If Len(txtDuracaoTemporadasAlbum.Text) = 1 Then
+                    txtDuracaoTemporadasAlbum.Text = "0" & txtDuracaoTemporadasAlbum.Text & ":00"
+               End If
+               
+                If Len(txtDuracaoTemporadasAlbum.Text) > 1 And Len(txtDuracaoTemporadasAlbum.Text) < 5 Then
+                    MsgBox "Insira a duracao em formato de horas e minutos: 12:45", vbExclamation, "CORRIJA O CAMPO DE DURACAO"
+                    Exit Sub
+               End If
+
+
+
+               
                ' Garante que a conexao esta aberta
                If connectBD.State = adStateClosed Then connectBD.Open
      
@@ -383,7 +396,7 @@ End If
                cmdFilme.Parameters.Append cmdFilme.CreateParameter(, adVarChar, adParamInput, 255, txtNome.Text)
                cmdFilme.Parameters.Append cmdFilme.CreateParameter(, adVarChar, adParamInput, 255, txtDiretorArtista.Text)
                cmdFilme.Parameters.Append cmdFilme.CreateParameter(, adVarChar, adParamInput, 255, txtAtoresParticipantes.Text)
-               cmdFilme.Parameters.Append cmdFilme.CreateParameter(, adVarChar, adParamInput, 5, txtDuracaoTemporadasAlbum.Text)
+               cmdFilme.Parameters.Append cmdFilme.CreateParameter(, adDBTime, adParamInput, , txtDuracaoTemporadasAlbum.Text)
                cmdFilme.Parameters.Append cmdFilme.CreateParameter(, adVarChar, adParamInput, 255, txtGenero.Text)
                cmdFilme.Parameters.Append cmdFilme.CreateParameter(, adInteger, adParamInput, , CInt(cboNota.Text))
                cmdFilme.Parameters.Append cmdFilme.CreateParameter(, adVarChar, adParamInput, 255, txtObservacao.Text)

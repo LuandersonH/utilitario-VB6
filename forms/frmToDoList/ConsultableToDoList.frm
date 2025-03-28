@@ -57,9 +57,9 @@ Begin VB.Form frmConsultableToDoList
       TabCaption(1)   =   "Histórico"
       TabPicture(1)   =   "ConsultableToDoList.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "inputHistoryFilter"
+      Tab(1).Control(0)=   "lblHistoryInput"
       Tab(1).Control(1)=   "GridHistorico"
-      Tab(1).Control(2)=   "lblHistoryInput"
+      Tab(1).Control(2)=   "inputHistoryFilter"
       Tab(1).ControlCount=   3
       Begin VB.TextBox inputHistoryFilter 
          BackColor       =   &H00C0E0FF&
